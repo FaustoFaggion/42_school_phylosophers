@@ -1,52 +1,52 @@
-NAME			=	philosophers
+# -*- Makefile -*-
 
-PATH_LIBFT		=	./libft
-LIBFT			=	$(PATH_LIBFT)/libft.a
+#	@	target name
+#	^	all dependencies
+#	<	first dependencie
+#	-c	create a file.o
+#	-o	place the output in a file 'file.'
 
-I_LIBFT			=	-I ./libft
-I_PHILO			=	-I ./include
+#target:	depenencies
+#	action
 
-CC				=	clang
-CFLAGS			=	-Wall -Werror -Wextra
+NAME		= 	philosophers
+CC			=	gcc
+CF			=	-Wall -Wextra -Werror
 
-SRC_DIR			=	src
-SRC_FILES		=	main.c\
-					chk_args.c\
+# Includes
+I_LIBFT		= 	-I ./libft
+I_PHIL		=	-I ./include
 
-SRC				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
+# PATH
+SRC_PATH	=	src/
+OBJ_PATH	=	obj/
+LIBFT_PATH	=	libft/
 
-OBJ_DIR			=	objects
-OBJ				=	$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# SRC
+SRC_FILES	=	main.c\
+				chk_args.c\
 
-all:	$(NAME)
+SRC			=	$(addprefix $(SRC_PATH), $(SRC_FILES))
 
-bonus:	$(NAME_BONUS)
+# OBJ
+OBJ_FILES	=	$(SRC:$(SRC_PATH)%.c=%.o)
+OBJ			=	$(addprefix $(OBJ_PATH), $(OBJ_FILES))
 
-$(NAME):	$(LIBFT) $(OBJ_DIR) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) $(I_PHILO) $(I_LIBFT)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(I_PHILO) $(I_LIBFT)
+all: $(NAME)
 
-$(LIBFT):
-	make -C $(PATH_LIBFT)
+$(NAME): $(OBJ)
+	make -C $(LIBFT_PATH)
+	$(CC) $(CF) $(OBJ) -o $@ $(I_LIBFT) $(I_PHIL)
 
-$(OBJ_DIR):
-	mkdir objects
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+		mkdir -p $(OBJ_PATH)
+	$(CC) $(CF) -c $^ -o $@ $(I_LIBFT) $(I_PHIL)
 
 clean:
+	make -C $(LIBFT_PATH) clean
 	rm -rf $(OBJ)
-	rm -rf $(OBJ_DIR)
-	make -C $(PATH_LIBFT) clean
-
-fclean: clean
+	rm -rf $(OBJ_PATH)
+	
+fclean:	clean
 	rm -rf $(NAME)
-	make -C $(PATH_LIBFT) fclean
-
-re: fclean all
-
-run:
-	make  && ./philosophers 1 2 3 4 5
-
-valgrind:
-	make re && valgrind --leak-check=full --show-leak-kinds=all ./minishell
