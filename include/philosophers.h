@@ -3,30 +3,28 @@
 
 # include <pthread.h>
 # include <stdio.h>
+# include "../libft/libft.h"
 
-
-typedef struct s_rules
+typedef struct s_routine
 {
+	int	num_phil;
 	int	tim_die;
 	int	tim_eat;
 	int	tim_slp;
 	int	num_eat;
-}	t_rules;
+}	t_routine;
 
 typedef struct s_phil
 {
-	pthread_t		seat;
-	struct s_phil	*next;
-	struct s_phil	*previus;
-	t_rules			rules;
+	pthread_t		phil;
+	t_routine		routine;
 }	t_phil;
 
 //src/system
-
-int		chk_args(int argc, char *argv[]);
-//int		init_process(t_phil *waiter, int argc, char *argv[]);
+int		init_process(t_routine *routine, int argc, char *argv[]);
 
 // threas
+pthread_t	thread_creation();
 
 //void	threads_init(int num_phil);
 #endif

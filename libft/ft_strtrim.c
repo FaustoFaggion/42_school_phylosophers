@@ -3,40 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:45:17 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:47:42 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2021/08/13 15:18:59 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:18:59 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Allocates (with malloc(3)) and returns a copy of ’s1’ with the characters 
-*	specified in ’set’ removed from the beginning and the end of the string.
-*	PARAMETERS
-*	#1. The string to be trimmed.
-*	#2. The reference set of characters to trim.
-*	RETURN VALUES
-*	The trimmed string. NULL if the allocation fails.
-*/
 
 #include "libft.h"
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
+	size_t	len;
 
 	if (!s1 || !set)
 		return (NULL);
-	i = 0;
-	while (ft_strchr(set, s1[i]) && s1[i] != '\0')
-		i++;
-	j = ft_strlen((char *)s1);
-	while (ft_strchr(set, s1[j]) && j != 0)
-		j--;
-	if ((int)(j - i + 1) <= 0)
-		return (ft_calloc(1, 1));
-	return (ft_substr(s1, i, (j - i + 1)));
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	len = ft_strlen(s1);
+	while (len && ft_strchr(set, s1[len]))
+		len--;
+	return (ft_substr(s1, 0, len + 1));
 }

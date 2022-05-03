@@ -3,44 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:22:59 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:22:29 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2021/08/13 15:15:57 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:15:57 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The memcpy() function copies n bytes from memory area src to memory area dst.  
-*	If dst and src overlap, behavior is undefined.
-*	PARAMETERS
-*	#1. The destiny pointer in which to copy.
-*	#2. The source pointer to copy.
-*	#3. The number of bytes to copy the source string.
-*	RETURN VALUES
-*	The memcpy() function returns the original value of dst.
-*/
 
 #include "libft.h"
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*dstc;
-	unsigned char	*srcc;
+	size_t	i;
 
-	if (dst == NULL && src == NULL)
+	if (!dst && !src)
 		return (NULL);
 	i = 0;
-	dstc = (unsigned char *)dst;
-	srcc = (unsigned char *)src;
-	while (i < n)
+	while (n--)
 	{
-		dstc[i] = srcc[i];
-		i++;
+		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
+		++i;
 	}
 	return (dst);
 }

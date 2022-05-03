@@ -3,22 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:46:12 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:51:02 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2021/08/13 15:16:31 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:16:31 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-*	Outputs the character ’c’ to the given file descriptor.
-*	PARAMETERS
-*	#1. The character to output.
-*	#2. The file descriptor on which to write.
-*	RETURN VALUES
-*	-
-*/
 
 #include "libft.h"
 

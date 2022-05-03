@@ -9,44 +9,61 @@
 #target:	depenencies
 #	action
 
-NAME		= 	philosophers
-CC			=	gcc
-CF			=	-Wall -Wextra -Werror
+NAME			= 	philophers
+LIBFT			= 	libft.a
 
-# Includes
-I_LIBFT		= 	-I ./libft
-I_PHIL		=	-I ./include
+#compilation
+CC 				=	gcc
+CF 				=	-Wall -Wextra -Werror
+CFI 			=	-I $(INCLUDE)
+THREAD			=	-lpthread
 
-# PATH
-SRC_PATH	=	src/
-OBJ_PATH	=	obj/
-LIBFT_PATH	=	libft/
+LIBFT_PATH 		=	./libft/
+SRC_PATH 		=	./src/
+OBJ_PATH		=	./obj/
+INCLUDE 		=	./include/
 
-# SRC
-SRC_FILES	=	main.c\
-				chk_args.c\
+L_LIBFT			=	-L $(LIBFT_PATH) -lft
 
-SRC			=	$(addprefix $(SRC_PATH), $(SRC_FILES))
+SRC				=	main.c\
+					init_process.c\
+					thread_creation.c\
 
-# OBJ
-OBJ_FILES	=	$(SRC:$(SRC_PATH)%.c=%.o)
-OBJ			=	$(addprefix $(OBJ_PATH), $(OBJ_FILES))
+VPATH 			:=	$(SRC_PATH)\
+					$(SRC_PATH)system\
+					$(SRC_PATH)threads\
 
+OBJ				=	$(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 
-all: $(NAME)
+#common commands
+RM 				=	rm -rf
 
-$(NAME): $(OBJ)
-	make -C $(LIBFT_PATH)
-	$(CC) $(CF) $(OBJ) -o $@ $(I_LIBFT) $(I_PHIL)
+#rules
+$(OBJ_PATH)%.o: %.c
+				@printf "\n$(CY)Generating object...$(RC)\n"
+				mkdir -p $(OBJ_PATH)
+				$(CC) $(CF) $(CFI) -c $< -o $@
+				@printf "$(GR)Object ready!$(RC)"
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-		mkdir -p $(OBJ_PATH)
-	$(CC) $(CF) -c $^ -o $@ $(I_LIBFT) $(I_PHIL)
+$(NAME):		$(OBJ)
+				@printf "\n$(CY)Generating libft...$(RC)\n"
+				make -C $(LIBFT_PATH) $(LIBFT)
+				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
+				$(CC) $(CF) -I $(INCLUDE) -o $(NAME) $(OBJ) $(L_LIBFT) $(THREAD)
+				@printf "$(GR)Done!$(RC)\n\n"
+
+all:			$(NAME)
+
+re:				fclean all
 
 clean:
-	make -C $(LIBFT_PATH) clean
-	rm -rf $(OBJ)
-	rm -rf $(OBJ_PATH)
-	
-fclean:	clean
-	rm -rf $(NAME)
+				make -C $(LIBFT_PATH) clean
+				$(RM) $(OBJ) $(OBJDIR)
+				@printf "$(RE)minishell objects removed!$(RC)\n\n"
+
+fclean:			clean
+				make -C $(LIBFT_PATH) fclean
+				$(RM) $(NAME)
+				@printf "$(RE)Executables removed!$(RC)\n\n"
+
+.PHONY:			all clean fclean re bonus rebonus

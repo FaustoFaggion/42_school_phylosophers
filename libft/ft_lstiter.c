@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/13 15:16:08 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/08/13 15:16:08 by fagiusep         ###   ########.fr       */
+/*   Created: 2021/08/13 15:14:22 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:14:22 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	unsigned char	*s;
-	unsigned char	*d;
-	int				i;
-
-	s = (unsigned char *)src;
-	d = (unsigned char *)dest;
-	i = n ;
-	if (d > s)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		while (i > 0)
-		{
-			d[i - 1] = s[i - 1];
-			i--;
-		}
-		return (dest);
+		if (lst->content)
+			f(lst->content);
+		lst = lst->next;
 	}
-	ft_memcpy(d, s, n);
-	return (dest);
 }

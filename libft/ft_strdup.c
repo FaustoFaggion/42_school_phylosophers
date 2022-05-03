@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:24:40 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 11:25:45 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2021/08/13 15:17:31 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:17:33 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The strdup() function allocates sufficient memory for a copy of the string 
-*	s1, does the copy, and returns a pointer to it.
-*	PARAMETERS
-*	#1. The string to duplicate.
-*	RETURN VALUES
-*	The strdup() function returns thE pointer to the copy of s1.
-*/
-
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+/*Falta entender strcpy para colocar nessa função*/
+char	*ft_strdup(const char *s)
 {
-	int		size;
-	char	*ptr;
+	size_t	len;
+	size_t	i;
+	char	*mem;
 
-	size = ft_strlen((char *)s1);
-	ptr = malloc((size + 1) * sizeof(char));
-	if (ptr == NULL)
+	i = 0;
+	len = ft_strlen(s);
+	mem = (char *)malloc(sizeof(char) * (len + 1));
+	if (!mem)
 		return (NULL);
-	ft_memcpy(ptr, s1, size);
-	ptr[size] = '\0';
-	return (ptr);
+	while (s[i] != '\0')
+	{
+		mem[i] = s[i];
+		++i;
+	}
+	mem[i] = '\0';
+	return (mem);
 }

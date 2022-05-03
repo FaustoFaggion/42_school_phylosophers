@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/01 09:15:37 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/03 13:24:56 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,24 @@
 **					parameter.
 */
 
-void	*phil_exec(void *phil)
+static void	*phil_exec()
 {
-	long *myid;
-
-	myid = (long *)phil;
 	printf("phil_exec function!\n");
-	printf("phi_id: %ld\n", *myid);
-	return (phil);
+	sleep(2);
+	printf("end phil_exec function!\n");
+	return ((void *)0);
 }
 
 pthread_t	thread_creation()
 {
-	pthread_t	phil;
+	pthread_t	p1;
+	pthread_t	p2;
 
-	pthread_create(&phil, NULL, phil_exec, (void *)&phil);
-	return(phil);
+	if (pthread_create(&p1, NULL, phil_exec, NULL) != 0)
+		return (1);
+	if (pthread_create(&p2, NULL, phil_exec, NULL) != 0)
+		return (1);
+	pthread_join(p1, NULL); //code valt first video
+	pthread_join(p2, NULL); //code valt first video
+	return(p1);
 }

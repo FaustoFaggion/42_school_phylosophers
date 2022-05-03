@@ -6,13 +6,13 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 16:13:47 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/04/30 18:54:36 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/02 12:24:19 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int	threads_init(t_data *data, int num_phil)
+int	threads_init(int argc, char *argv[])
 {
 	int	i;
 	

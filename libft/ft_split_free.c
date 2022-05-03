@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_split_free.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/13 15:11:18 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/08/13 15:11:48 by fagiusep         ###   ########.fr       */
+/*   Created: 2021/11/16 12:19:52 by fausto            #+#    #+#             */
+/*   Updated: 2021/11/16 12:20:34 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isupper(int c)
+void	ft_split_free(char **ptr)
 {
-	return (c >= 'A' && c <= 'Z');
-}
+	int	i;
 
-static int	ft_islower(int c)
-{
-	return (c >= 'a' && c <= 'z');
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_isupper(c) || ft_islower(c));
+	i = -1;
+	while (ptr[++i])
+		free(ptr[i]);
+	free(ptr);
 }

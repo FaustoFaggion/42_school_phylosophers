@@ -3,38 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/30 20:23:13 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/30 20:23:13 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2021/08/13 15:16:17 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:16:17 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	LIBRARY
-*	#include <string.h>
-*	DESCRIPTION
-*	The memset() function writes len bytes of value c (converted to an 
-*	unsigned char) to the string b.
-*	PARAMETERS
-*	#1. The destiny pointer in which to write.
-*	#2. The character to write.
-*	#3. The number of bytes to write.
-*	RETURN VALUES
-*	The memset() function returns its first argument.  
-*/
 
 #include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t	i;
+	unsigned char	*str;
 
-	i = 0;
-	while (i < n)
+	str = (unsigned char *)s;
+	while (n > 0)
 	{
-		((unsigned char *)s)[i] = c;
-		i++;
+		*str = (unsigned char)c;
+		str++;
+		n--;
 	}
-	return (s);
+	return ((void *)s);
 }

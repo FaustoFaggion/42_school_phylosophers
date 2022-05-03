@@ -3,40 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 11:45:41 by cado-car          #+#    #+#             */
-/*   Updated: 2021/07/31 21:51:12 by cado-car         ###   ########lyon.fr   */
+/*   Created: 2021/08/13 15:18:19 by fagiusep          #+#    #+#             */
+/*   Updated: 2021/08/13 15:18:19 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-*	DESCRIPTION
-* 	Applies the function ’f’ to each character of the ’s’ to create a new 
-*	string (with malloc) resulting from successive applications of ’f’.
-*	PARAMETERS
-*	#1. The string on which to iterate.
-*	#2. The function to apply to each character.
-*	RETURN VALUES
-*	The string created from the successive applications of ’f’. 
-*	Returns NULL if the allocation fails.
-*/
 
 #include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	i;
-	char	*c_s;
+	char			*str;
+	unsigned int	size;
+	unsigned int	i;
 
 	if (!s || !f)
 		return (NULL);
-	c_s = (char *)malloc((ft_strlen((char *)s) + 1) * sizeof(char));
-	i = -1;
-	if (c_s == NULL)
+	str = (char *)s;
+	size = ft_strlen(str);
+	str = (char *)malloc((sizeof(char) * (size + 1)));
+	if (!str)
 		return (NULL);
-	while (s[++i] != '\0')
-		c_s[i] = (*f)(i, s[i]);
-	c_s[i] = '\0';
-	return (c_s);
+	i = 0;
+	while (s[i])
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
