@@ -16,8 +16,9 @@ typedef struct s_routine
 
 typedef struct s_phil
 {
-	pthread_t		phil;
+	pthread_t		philo;
 	t_routine		routine;
+//	pthread_mutex_t	mutex;
 }	t_phil;
 
 //src/system

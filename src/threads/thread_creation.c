@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/03 13:24:56 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:34:41 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,36 @@
 **					parameter.
 */
 
+long	value;
+pthread_mutex_t	mutex;
+
 static void	*phil_exec()
 {
-	printf("phil_exec function!\n");
-	sleep(2);
-	printf("end phil_exec function!\n");
+	int	i;
+
+	i = 0;
+	pthread_mutex_lock(&mutex);
+	while(++i < 1000000)
+		value++;
+	pthread_mutex_unlock(&mutex);
 	return ((void *)0);
 }
 
 pthread_t	thread_creation()
 {
-	pthread_t	p1;
-	pthread_t	p2;
-
-	if (pthread_create(&p1, NULL, phil_exec, NULL) != 0)
-		return (1);
-	if (pthread_create(&p2, NULL, phil_exec, NULL) != 0)
-		return (1);
-	pthread_join(p1, NULL); //code valt first video
-	pthread_join(p2, NULL); //code valt first video
-	return(p1);
+	t_phil	*p1;
+	t_phil	*p2;
+	pthread_mutex_init(&mutex, NULL);
+	
+	p1 = malloc(sizeof(t_phil));
+	p2 = malloc(sizeof(t_phil));
+	value = 0;
+	pthread_create(&p1->philo, NULL, phil_exec, NULL);
+	pthread_create(&p2->philo, NULL, phil_exec, NULL);
+	
+	pthread_join(p1->philo, NULL); //code valt first video
+	pthread_join(p2->philo, NULL); //code valt first video
+	printf("value: %ld\n", value);
+	pthread_mutex_destroy(&mutex);
+	return(p1->philo);
 }

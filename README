@@ -11,7 +11,7 @@
   - As the varibles are comom you have to make sure when a thread is changing a variable the other threads can't acess the variable.
 - Share the same file handlers.
 - All the system resources are shared among the threads.
-
+- The system with thread will run. We can't control that.
 ### Process
 
 - Run independily from others process
@@ -19,6 +19,18 @@
   - When create a process, the parent variables are duplicated for the child process.
   - Changes in variables on the parent process don't afect the variables in the child process.
 - File handlers are duplicated.
+
+## Race Condition
+
+## Waht is a Race Condition?
+
+It just can happen if there is a multi core processor.
+
+### Thread execution:
+
+- Read the value of them in your own register.
+- Apply a function required using the values saved in his register.
+-  Apply this values to the variables in memory.
 
 ### Links
 
