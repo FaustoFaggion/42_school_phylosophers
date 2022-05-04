@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/03 17:34:41 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/04 07:43:28 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ static void	*phil_exec()
 
 pthread_t	thread_creation()
 {
-	t_phil	*p1;
-	t_phil	*p2;
+	t_seat	*p1;
+	t_seat	*p2;
+	
 	pthread_mutex_init(&mutex, NULL);
 	
-	p1 = malloc(sizeof(t_phil));
-	p2 = malloc(sizeof(t_phil));
+	p1 = malloc(sizeof(t_seat));
+	p2 = malloc(sizeof(t_seat));
 	value = 0;
 	pthread_create(&p1->philo, NULL, phil_exec, NULL);
 	pthread_create(&p2->philo, NULL, phil_exec, NULL);
