@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/04 07:43:28 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/04 10:09:19 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,12 @@ static void	*phil_exec()
 	return ((void *)0);
 }
 
-pthread_t	thread_creation()
-{
-	t_seat	*p1;
-	t_seat	*p2;
-	
+void	thread_creation(pthread_t *philo)
+{	
 	pthread_mutex_init(&mutex, NULL);
-	
-	p1 = malloc(sizeof(t_seat));
-	p2 = malloc(sizeof(t_seat));
 	value = 0;
-	pthread_create(&p1->philo, NULL, phil_exec, NULL);
-	pthread_create(&p2->philo, NULL, phil_exec, NULL);
-	
-	pthread_join(p1->philo, NULL); //code valt first video
-	pthread_join(p2->philo, NULL); //code valt first video
+	pthread_create(philo, NULL, phil_exec, NULL);
+	pthread_join(*philo, NULL); //code valt first video
 	printf("value: %ld\n", value);
 	pthread_mutex_destroy(&mutex);
-	return(p1->philo);
 }

@@ -1,13 +1,15 @@
 #include "philosophers.h"
 
 static int	chk_args(int argc, char *argv[]);
-static void	fill_routine(t_table *table, int argc, char *argv[]);
+static void	init_table(t_table *table, int argc, char *argv[]);
+static void	init_seats(t_seat *seats, int num);
 
 int	init_process(t_table *table, int argc, char *argv[])
 {
 	if (chk_args(argc, argv) == 1)
 		return (1);
-	fill_routine(table, argc, argv);
+	init_table(table, argc, argv);
+	init_seats(table->seats, table->num_seats);
 	
 	return (0);
 }
@@ -39,7 +41,7 @@ int		chk_args(int argc, char *argv[])
 	return (0);
 }
 
-static void	fill_routine(t_table *table, int argc, char *argv[])
+static void	init_table(t_table *table, int argc, char *argv[])
 {
 	table->num_seats = ft_atoi(argv[1]);
 	table->routine.tim_die = ft_atoi(argv[2]);
@@ -47,4 +49,19 @@ static void	fill_routine(t_table *table, int argc, char *argv[])
 	table->routine.tim_slp = ft_atoi(argv[4]);
 	if (argc == 8)
 		table->routine.num_eat = ft_atoi(argv[5]);
+	table->seats = ft_calloc(table->num_seats + 1, sizeof(t_seat));
+}
+
+static void	init_seats(t_seat *seats, int num)
+{
+	int	i;
+
+	i = -1;
+	while (++i < num)
+	{
+		(seats[i]).id = i + 1;
+		thread_creation(&(seats[i]).philo);
+		printf("id: %d\n", (seats[i]).id);
+
+	}
 }

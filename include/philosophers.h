@@ -16,6 +16,7 @@ typedef struct s_routine
 typedef struct s_seat
 {
 	pthread_t		philo;
+	int				id;
 	t_routine		routine;
 //	pthread_mutex_t	mutex;
 }	t_seat;
@@ -23,7 +24,7 @@ typedef struct s_seat
 typedef struct s_table
 {
 	int			num_seats;
-	t_seat		*seats_on_table;
+	t_seat		*seats;
 	t_routine	routine;
 }	t_table;
 
@@ -31,7 +32,10 @@ typedef struct s_table
 int		init_process(t_table *table, int argc, char *argv[]);
 
 // threas
-pthread_t	thread_creation();
+void	thread_creation(pthread_t *philo);
 
 //void	threads_init(int num_phil);
+
+
+void	print_(t_table *table, int argc);
 #endif

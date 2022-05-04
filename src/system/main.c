@@ -1,6 +1,6 @@
 #include "philosophers.h"
 
-static void	print_(t_table *table, int argc)
+void	print_(t_table *table, int argc)
 {
 	printf("num_philo: %d\n", table->num_seats);
 	printf("tim_die: %d\n", table->routine.tim_die);
@@ -16,8 +16,7 @@ int	main(int argc, char *argv[])
 
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
-	thread_creation();
-	print_(&table, argc);
-//	pthread_exit;
+//	thread_creation(&table);
+//	print_(&table, argc);
 	return (0);
 }
