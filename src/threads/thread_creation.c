@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/05 14:52:22 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:27:37 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,35 +39,34 @@
 
 pthread_mutex_t	mutex;
 
-static void	*phil_exec(void *value)
+static void	*phil_exec(void *seat)
 {
-//	int	i;
-	int	x;
-	t_seat	*temp;
+	int		x;
+	t_seat	*philo;
 
-	temp = (t_seat *)value;
-	
+	philo = (t_seat *)seat;
+//	start_routine(philo);
 	x = -1;
 	while (++x < 2)
 	{
-		pthread_mutex_lock(&mutex);
-		printf("id: %d\n", temp->id);
-//		i = 0;
-//		while (++i <= 100)
-//			(*(int *)value)++;
-		pthread_mutex_unlock(&mutex);
+		pthread_mutex_lock(philo->fork_left);
+		pthread_mutex_lock(philo->fork_right);
+
+		printf("timestamp %d has taken a fork\n", philo->id);
+		printf("timestamp %d is eating\n", philo->id);
+		usleep(philo->routine.tim_eat * 1000);
+
+		pthread_mutex_unlock(philo->fork_left);
+		pthread_mutex_unlock(philo->fork_right);
+		printf("timestamp %d finish eating\n", philo->id);
 	}
-	return ((void *)value);
+	return ((void *)0);
 }
 
 void	thread_creation(t_table *table)
 {
 	int	i;
-//	int	*value;
 	
-//	value = ft_calloc(1, sizeof(int));
-//	*value = 0;
-	srand(time(NULL));
 	pthread_mutex_init(&mutex, NULL);
 	i = -1;
 	while (++i < table->num_seats)
@@ -75,16 +74,17 @@ void	thread_creation(t_table *table)
 		if (pthread_create(&table->seats[i].philo, NULL, phil_exec,
 			(void*)&table->seats[i]) != 0)
 			return ;
-		printf("thread  id:%d started!\n", i);
+		printf("thread  id:%d started!\n", i + 1);
 	}
 	i = -1;
 	while (++i < table->num_seats)
 	{
 		if (pthread_join(table->seats[i].philo, NULL) != 0)
 			return ;
-		printf("thread  id:%d finished!\n", i);
+		printf("thread  id:%d finished!\n", i + 1);
 	}
-//	printf("value: %d\n", *value);
 	pthread_mutex_destroy(&mutex);
-//	free(value);
+	while (++i < table->num_seats)
+		pthread_mutex_destroy(&table->forks[i]);
+
 }

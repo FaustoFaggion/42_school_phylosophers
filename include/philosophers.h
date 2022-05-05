@@ -4,8 +4,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include "../libft/libft.h"
-
-#include <time.h>
+#include <sys/time.h>
 
 typedef struct s_routine
 {
@@ -20,8 +19,8 @@ typedef struct s_seat
 	pthread_t		philo;
 	int				id;
 	t_routine		routine;
-	pthread_mutex_t	fork_left;
-	pthread_mutex_t	fork_right;
+	pthread_mutex_t	*fork_left;
+	pthread_mutex_t	*fork_right;
 }	t_seat;
 
 typedef struct s_table
