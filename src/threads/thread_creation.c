@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/04 10:09:19 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:52:22 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,27 +37,54 @@
 **					parameter.
 */
 
-long	value;
 pthread_mutex_t	mutex;
 
-static void	*phil_exec()
+static void	*phil_exec(void *value)
 {
-	int	i;
+//	int	i;
+	int	x;
+	t_seat	*temp;
 
-	i = 0;
-	pthread_mutex_lock(&mutex);
-	while(++i < 1000000)
-		value++;
-	pthread_mutex_unlock(&mutex);
-	return ((void *)0);
+	temp = (t_seat *)value;
+	
+	x = -1;
+	while (++x < 2)
+	{
+		pthread_mutex_lock(&mutex);
+		printf("id: %d\n", temp->id);
+//		i = 0;
+//		while (++i <= 100)
+//			(*(int *)value)++;
+		pthread_mutex_unlock(&mutex);
+	}
+	return ((void *)value);
 }
 
-void	thread_creation(pthread_t *philo)
-{	
+void	thread_creation(t_table *table)
+{
+	int	i;
+//	int	*value;
+	
+//	value = ft_calloc(1, sizeof(int));
+//	*value = 0;
+	srand(time(NULL));
 	pthread_mutex_init(&mutex, NULL);
-	value = 0;
-	pthread_create(philo, NULL, phil_exec, NULL);
-	pthread_join(*philo, NULL); //code valt first video
-	printf("value: %ld\n", value);
+	i = -1;
+	while (++i < table->num_seats)
+	{
+		if (pthread_create(&table->seats[i].philo, NULL, phil_exec,
+			(void*)&table->seats[i]) != 0)
+			return ;
+		printf("thread  id:%d started!\n", i);
+	}
+	i = -1;
+	while (++i < table->num_seats)
+	{
+		if (pthread_join(table->seats[i].philo, NULL) != 0)
+			return ;
+		printf("thread  id:%d finished!\n", i);
+	}
+//	printf("value: %d\n", *value);
 	pthread_mutex_destroy(&mutex);
+//	free(value);
 }

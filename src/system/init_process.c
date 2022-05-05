@@ -2,14 +2,15 @@
 
 static int	chk_args(int argc, char *argv[]);
 static void	init_table(t_table *table, int argc, char *argv[]);
-static void	init_seats(t_seat *seats, int num);
+static void	init_seats(t_table *table);
+
 
 int	init_process(t_table *table, int argc, char *argv[])
 {
 	if (chk_args(argc, argv) == 1)
 		return (1);
 	init_table(table, argc, argv);
-	init_seats(table->seats, table->num_seats);
+	init_seats(table);
 	
 	return (0);
 }
@@ -47,21 +48,32 @@ static void	init_table(t_table *table, int argc, char *argv[])
 	table->routine.tim_die = ft_atoi(argv[2]);
 	table->routine.tim_eat = ft_atoi(argv[3]);
 	table->routine.tim_slp = ft_atoi(argv[4]);
-	if (argc == 8)
+	if (argc == 6)
 		table->routine.num_eat = ft_atoi(argv[5]);
 	table->seats = ft_calloc(table->num_seats + 1, sizeof(t_seat));
+	table->forks = ft_calloc(table->num_seats + 1, sizeof(pthread_mutex_t));
 }
 
-static void	init_seats(t_seat *seats, int num)
+static void	init_seats(t_table *table)
 {
 	int	i;
 
+	table->seats = ft_calloc(table->num_seats + 1, sizeof(t_seat));
 	i = -1;
-	while (++i < num)
+	while (++i < table->num_seats)
+		table->seats[i].id = i + 1;
+	i = -1;
+	while (++i < table->num_seats)
 	{
-		(seats[i]).id = i + 1;
-		thread_creation(&(seats[i]).philo);
-		printf("id: %d\n", (seats[i]).id);
-
+		if (i + 1 == table->num_seats)
+		{
+			table->seats[i].fork_right = table->forks[i];
+			table->seats[i].fork_left = table->forks[0];
+		}
+		else
+		{
+			table->seats[i].fork_right = table->forks[i];
+			table->seats[i].fork_left = table->forks[i + 1];
+		}
 	}
 }

@@ -10,13 +10,14 @@ void	print_(t_table *table, int argc)
 		printf("num_eat: %d\n", table->routine.num_eat);
 }
 
+
 int	main(int argc, char *argv[])
 {
 	t_table	table;
 
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
-//	thread_creation(&table);
+	thread_creation(&table);
 //	print_(&table, argc);
 	return (0);
 }
