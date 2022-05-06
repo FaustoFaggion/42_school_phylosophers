@@ -18,6 +18,7 @@ int	main(int argc, char *argv[])
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
 	thread_creation(&table);
+//	clean(&table);
 //	print_(&table, argc);
 	return (0);
 }

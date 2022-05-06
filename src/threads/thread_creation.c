@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/05 18:27:37 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/06 07:57:53 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	thread_creation(t_table *table)
 {
 	int	i;
 	
-	pthread_mutex_init(&mutex, NULL);
 	i = -1;
 	while (++i < table->num_seats)
 	{
@@ -83,7 +82,6 @@ void	thread_creation(t_table *table)
 			return ;
 		printf("thread  id:%d finished!\n", i + 1);
 	}
-	pthread_mutex_destroy(&mutex);
 	while (++i < table->num_seats)
 		pthread_mutex_destroy(&table->forks[i]);
 

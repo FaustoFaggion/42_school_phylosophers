@@ -27,7 +27,9 @@ L_LIBFT			=	-L $(LIBFT_PATH) -lft
 
 SRC				=	main.c\
 					init_process.c\
+					init_table_routine.c\
 					thread_creation.c\
+					clean.c\
 
 VPATH 			:=	$(SRC_PATH)\
 					$(SRC_PATH)system\

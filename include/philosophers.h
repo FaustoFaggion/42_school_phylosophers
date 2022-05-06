@@ -33,11 +33,14 @@ typedef struct s_table
 
 //src/system
 int		init_process(t_table *table, int argc, char *argv[]);
+void	clean(t_table *table);
+
+//init
+void	init_table_routine(t_table *table, int argc, char *argv[]);
 
 // threas
 void	thread_creation(t_table *table);
 
-//void	threads_init(int num_phil);
 
 
 void	print_(t_table *table, int argc);
