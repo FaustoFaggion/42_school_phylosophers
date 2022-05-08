@@ -54,6 +54,7 @@ static void	init_table_routine(t_table *table, int argc, char *argv[])
 		table->routine.num_eat = ft_atoi(argv[5]);
 	else
 		table->routine.num_eat = 0;
+	table->routine.last_meal = 0;
 }
 
 static void	init_table_seats(t_table *table)
@@ -72,6 +73,7 @@ static void	init_table_seats(t_table *table)
 		table->seats[i].routine.tim_eat = table->routine.tim_eat;
 		table->seats[i].routine.tim_slp = table->routine.tim_slp;
 		table->seats[i].routine.num_eat = table->routine.num_eat;
+		table->seats[i].routine.last_meal = 0;
 	}
 }
 

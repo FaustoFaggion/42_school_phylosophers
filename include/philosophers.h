@@ -8,7 +8,8 @@
 
 typedef struct s_routine
 {
-	int	start;
+	long int	start;
+	long int	last_meal;
 	int	tim_die;
 	int	tim_eat;
 	int	tim_slp;

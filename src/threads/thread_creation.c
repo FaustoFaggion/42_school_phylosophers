@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/08 12:01:44 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/08 19:29:09 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	start_table(t_table *table)
 	table->routine.start = get_time();
 	i = -1;
 	while (++i < table->num_seats)
-		table->seats->routine.start = table->routine.start;
+		table->seats[i].routine.start = table->routine.start;
 }
 
 void	thread_creation(t_table *table)
