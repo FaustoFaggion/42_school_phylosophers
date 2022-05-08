@@ -28,12 +28,14 @@ L_LIBFT			=	-L $(LIBFT_PATH) -lft
 SRC				=	main.c\
 					init_process.c\
 					thread_creation.c\
+					exec_philo.c\
 					clean.c\
 
 VPATH 			:=	$(SRC_PATH)\
 					$(SRC_PATH)system\
 					$(SRC_PATH)threads\
 					$(SRC_PATH)init\
+					$(SRC_PATH)exec\
 
 OBJ				=	$(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 

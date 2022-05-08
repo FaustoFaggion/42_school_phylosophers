@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/06 07:46:32 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/08 09:50:37 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*exec_philo(void *seat)
 	t_seat	*philo;
 
 	philo = (t_seat *)seat;
-	start_routine(&philo->routine);
+//	start_routine(&philo->routine);
 	x = -1;
 	while (++x < 2)
 	{

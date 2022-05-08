@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/06 07:57:53 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/08 09:49:06 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,30 +39,6 @@
 
 pthread_mutex_t	mutex;
 
-static void	*phil_exec(void *seat)
-{
-	int		x;
-	t_seat	*philo;
-
-	philo = (t_seat *)seat;
-//	start_routine(philo);
-	x = -1;
-	while (++x < 2)
-	{
-		pthread_mutex_lock(philo->fork_left);
-		pthread_mutex_lock(philo->fork_right);
-
-		printf("timestamp %d has taken a fork\n", philo->id);
-		printf("timestamp %d is eating\n", philo->id);
-		usleep(philo->routine.tim_eat * 1000);
-
-		pthread_mutex_unlock(philo->fork_left);
-		pthread_mutex_unlock(philo->fork_right);
-		printf("timestamp %d finish eating\n", philo->id);
-	}
-	return ((void *)0);
-}
-
 void	thread_creation(t_table *table)
 {
 	int	i;
@@ -70,7 +46,7 @@ void	thread_creation(t_table *table)
 	i = -1;
 	while (++i < table->num_seats)
 	{
-		if (pthread_create(&table->seats[i].philo, NULL, phil_exec,
+		if (pthread_create(&table->seats[i].philo, NULL, exec_philo,
 			(void*)&table->seats[i]) != 0)
 			return ;
 		printf("thread  id:%d started!\n", i + 1);

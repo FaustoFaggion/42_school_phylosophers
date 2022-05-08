@@ -37,10 +37,11 @@ void	clean(t_table *table);
 //init
 int		init_process(t_table *table, int argc, char *argv[]);
 
-// threas
+// threads
 void	thread_creation(t_table *table);
 
-
+//exec
+void	*exec_philo(void *seat);
 
 void	print_(t_table *table, int argc);
 #endif
