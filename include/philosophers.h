@@ -8,6 +8,7 @@
 
 typedef struct s_routine
 {
+	int	start;
 	int	tim_die;
 	int	tim_eat;
 	int	tim_slp;
@@ -42,6 +43,13 @@ void	thread_creation(t_table *table);
 
 //exec
 void	*exec_philo(void *seat);
+
+//time
+unsigned long long	get_time(void);
+
+
+
+
 
 void	print_(t_table *table, int argc);
 #endif

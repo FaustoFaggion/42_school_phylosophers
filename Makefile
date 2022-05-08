@@ -29,6 +29,7 @@ SRC				=	main.c\
 					init_process.c\
 					thread_creation.c\
 					exec_philo.c\
+					time.c\
 					clean.c\
 
 VPATH 			:=	$(SRC_PATH)\
@@ -36,6 +37,7 @@ VPATH 			:=	$(SRC_PATH)\
 					$(SRC_PATH)threads\
 					$(SRC_PATH)init\
 					$(SRC_PATH)exec\
+					$(SRC_PATH)time\
 
 OBJ				=	$(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 

@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/08 09:49:06 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/08 12:01:44 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,21 @@
 **					parameter.
 */
 
-pthread_mutex_t	mutex;
+static void	start_table(t_table *table)
+{
+	int	i;
+
+	table->routine.start = get_time();
+	i = -1;
+	while (++i < table->num_seats)
+		table->seats->routine.start = table->routine.start;
+}
 
 void	thread_creation(t_table *table)
 {
 	int	i;
 	
+	start_table(table);
 	i = -1;
 	while (++i < table->num_seats)
 	{

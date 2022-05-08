@@ -65,7 +65,14 @@ static void	init_table_seats(t_table *table)
 	i = -1;
 	while (++i < table->num_seats)
 		table->seats[i].id = i + 1;
-	
+	i = -1;
+	while (++i < table->num_seats)
+	{
+		table->seats[i].routine.tim_die = table->routine.tim_die;
+		table->seats[i].routine.tim_eat = table->routine.tim_eat;
+		table->seats[i].routine.tim_slp = table->routine.tim_slp;
+		table->seats[i].routine.num_eat = table->routine.num_eat;
+	}
 }
 
 static void	init_table_forks(t_table *table)
