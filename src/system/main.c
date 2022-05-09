@@ -17,7 +17,8 @@ int	main(int argc, char *argv[])
 
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
-	thread_creation(&table);
+	setup_table(&table);
+	create_philo(&table);
 //	clean(&table);
 //	print_(&table, argc);
 	return (0);

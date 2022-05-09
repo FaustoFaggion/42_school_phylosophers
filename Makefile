@@ -27,8 +27,10 @@ L_LIBFT			=	-L $(LIBFT_PATH) -lft
 
 SRC				=	main.c\
 					init_process.c\
-					thread_creation.c\
-					exec_philo.c\
+					setup_table.c\
+					create_waiter.c\
+					create_philo.c\
+					lunch.c\
 					time.c\
 					clean.c\
 

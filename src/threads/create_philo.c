@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread_creation.c                                  :+:      :+:    :+:   */
+/*   create_philo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/30 14:25:32 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/08 19:29:09 by fagiusep         ###   ########.fr       */
+/*   Created: 2022/05/09 12:57:56 by fagiusep          #+#    #+#             */
+/*   Updated: 2022/05/09 12:57:57 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,37 +37,25 @@
 **					parameter.
 */
 
-static void	start_table(t_table *table)
+void	create_philo(t_table *table)
 {
 	int	i;
 
-	table->routine.start = get_time();
-	i = -1;
-	while (++i < table->num_seats)
-		table->seats[i].routine.start = table->routine.start;
-}
-
-void	thread_creation(t_table *table)
-{
-	int	i;
-	
-	start_table(table);
 	i = -1;
 	while (++i < table->num_seats)
 	{
-		if (pthread_create(&table->seats[i].philo, NULL, exec_philo,
+		if (pthread_create(&table->seats[i].philo, NULL, lunch,
 			(void*)&table->seats[i]) != 0)
 			return ;
-		printf("thread  id:%d started!\n", i + 1);
 	}
 	i = -1;
 	while (++i < table->num_seats)
 	{
 		if (pthread_join(table->seats[i].philo, NULL) != 0)
 			return ;
-		printf("thread  id:%d finished!\n", i + 1);
 	}
 	while (++i < table->num_seats)
 		pthread_mutex_destroy(&table->forks[i]);
-
+	free(table->forks);
+	free(table->seats);
 }

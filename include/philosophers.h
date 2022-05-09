@@ -10,10 +10,10 @@ typedef struct s_routine
 {
 	long int	start;
 	long int	last_meal;
-	int	tim_die;
-	int	tim_eat;
-	int	tim_slp;
-	int	num_eat;
+	int			tim_die;
+	int			tim_eat;
+	int			tim_slp;
+	int			num_eat;
 }	t_routine;
 
 typedef struct s_seat
@@ -31,6 +31,7 @@ typedef struct s_table
 	t_seat			*seats;
 	pthread_mutex_t	*forks;
 	t_routine		routine;
+	pthread_t		waiter;
 }	t_table;
 
 //src/system
@@ -40,15 +41,16 @@ void	clean(t_table *table);
 int		init_process(t_table *table, int argc, char *argv[]);
 
 // threads
-void	thread_creation(t_table *table);
+void	create_philo(t_table *table);
+
 
 //exec
-void	*exec_philo(void *seat);
+void	setup_table(t_table *table);
+void	*lunch(void *seat);
 
 //time
 unsigned long long	get_time(void);
-
-
+unsigned long long	get_now(t_seat *philo);
 
 
 

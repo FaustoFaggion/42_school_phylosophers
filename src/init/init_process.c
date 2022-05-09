@@ -14,6 +14,7 @@ int	init_process(t_table *table, int argc, char *argv[])
 	init_table_seats(table);
 	init_table_forks(table);
 	
+	
 	return (0);
 }
 
