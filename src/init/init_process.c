@@ -1,7 +1,7 @@
 #include "philosophers.h"
 
 static int	chk_args(int argc, char *argv[]);
-static void	init_table_routine(t_table *table, int argc, char *argv[]);
+static void	init_table(t_table *table, int argc, char *argv[]);
 static void	init_table_seats(t_table *table);
 static void	init_table_forks(t_table *table);
 
@@ -10,7 +10,7 @@ int	init_process(t_table *table, int argc, char *argv[])
 {
 	if (chk_args(argc, argv) == 1)
 		return (1);
-	init_table_routine(table, argc, argv);
+	init_table(table, argc, argv);
 	init_table_seats(table);
 	init_table_forks(table);
 	
@@ -45,7 +45,7 @@ int		chk_args(int argc, char *argv[])
 	return (0);
 }
 
-static void	init_table_routine(t_table *table, int argc, char *argv[])
+static void	init_table(t_table *table, int argc, char *argv[])
 {
 	table->num_seats = ft_atoi(argv[1]);
 	table->routine.tim_die = ft_atoi(argv[2]);
