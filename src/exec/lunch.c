@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lunch.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/09 12:59:51 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/05/10 17:37:15 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	*lunch(void *seat)
 		has_taken_a_fork(philo);
 		is_eating(philo);
 		leave_fork(philo);
-		printf("%d leave fork\n\n", philo->id);
 		pthread_mutex_unlock(philo->fork_left);
 		pthread_mutex_unlock(philo->fork_right);
 		is_sleeping(philo);
@@ -50,7 +49,7 @@ static void	leave_fork(t_seat *philo)
 	
 	t = get_time();
 	now = t - philo->routine.start;
-	printf("%ld %d is sleeping\n",now, philo->id);
+	printf("%ld %d leave fork\n",now, philo->id);
 	usleep(philo->routine.tim_slp * 1000);
 }
 
