@@ -1,6 +1,6 @@
 NAME		:= libft.a
 
-CC			:= clang
+CC			:= gcc
 
 CFLAGS		:= -Wall -Werror -Wextra
 
