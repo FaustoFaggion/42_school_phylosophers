@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/10 17:54:57 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/10 17:57:26 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ static void	leave_fork(t_seat *philo)
 
 static void	msg(char *msg, t_seat *philo)
 {
-	long int	t;
 	long int	now;
-	
-	t = get_time();
-	now = t - philo->routine.start;
+
+	now = get_now(philo);
 	printf("%ld %d %s\n", now, philo->id, msg);
 }
 
