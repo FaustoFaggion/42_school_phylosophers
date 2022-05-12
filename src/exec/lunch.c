@@ -6,14 +6,13 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/12 09:59:26 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/12 12:25:33 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
 static void	has_taken_a_fork(t_seat *philo);
-static void	taken_fork(t_seat *philo);
 static void	is_eating(t_seat *philo);
 static void	is_sleeping(t_seat *philo);
 static void	is_thinking(t_seat *philo);
@@ -29,7 +28,7 @@ void	*lunch(void *seat)
 	if (philo->id % 2 == 0)
 		usleep(90); // definr de acordo com o numero de philosophers.
 	x = -1;
-	while (++x < philo->routine.num_eat)
+	while (++x < philo->routine.num_eat || philo->die_flag == 0)
 	{
 		has_taken_a_fork(philo);
 		is_eating(philo);
@@ -60,22 +59,17 @@ static void	has_taken_a_fork(t_seat *philo)
 	if (philo->id % 2 != 0)
 	{
 		pthread_mutex_lock(philo->fork_right);
-		taken_fork(philo);
+		msg("has taken a fork\n", philo);
 		pthread_mutex_lock(philo->fork_left);
-		taken_fork(philo);
+		msg("has taken a fork\n", philo);
 	}
 	else
 	{
 		pthread_mutex_lock(philo->fork_left);
-		taken_fork(philo);
+		msg("has taken a fork\n", philo);
 		pthread_mutex_lock(philo->fork_right);
-		taken_fork(philo);
+		msg("has taken a fork\n", philo);
 	}
-}
-
-static void	taken_fork(t_seat *philo)
-{	
-	msg("has taken a fork\n", philo);
 }
 
 static void	is_eating(t_seat *philo)
@@ -85,7 +79,7 @@ static void	is_eating(t_seat *philo)
 
 	now = get_now(philo);
 	die = now - philo->routine.last_meal;
-	printf("%ld %d die ...................................\n",die, philo->id);
+	printf("%ld ms %d from last meal.................\n",die, philo->id);
 	philo->routine.last_meal = get_now(philo);
 	msg("is eating\n", philo);
 	usleep(philo->routine.tim_eat * 1000);

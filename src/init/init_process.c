@@ -56,6 +56,7 @@ static void	init_table(t_table *table, int argc, char *argv[])
 	else
 		table->routine.num_eat = 0;
 	table->routine.last_meal = 0;
+	table->die_flag = 0;
 }
 
 static void	init_table_seats(t_table *table)
@@ -66,7 +67,10 @@ static void	init_table_seats(t_table *table)
 	table->seats = ft_calloc(table->num_seats + 1, sizeof(t_seat));
 	i = -1;
 	while (++i < table->num_seats)
+	{
 		table->seats[i].id = i + 1;
+		table->seats[i].die_flag = &table->die_flag;
+	}
 	i = -1;
 	while (++i < table->num_seats)
 	{
