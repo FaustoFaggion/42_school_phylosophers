@@ -24,6 +24,7 @@ typedef struct s_seat
 	t_routine		routine;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
+	pthread_mutex_t	*waiter;
 }	t_seat;
 
 typedef struct s_table
@@ -32,7 +33,7 @@ typedef struct s_table
 	t_seat			*seats;
 	pthread_mutex_t	*forks;
 	t_routine		routine;
-	pthread_t		waiter;
+	pthread_mutex_t	*waiter;
 	int				die_flag;
 }	t_table;
 
