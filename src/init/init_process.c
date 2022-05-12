@@ -57,6 +57,7 @@ static void	init_table(t_table *table, int argc, char *argv[])
 		table->routine.num_eat = 0;
 	table->routine.last_meal = 0;
 	table->die_flag = 0;
+	pthread_mutex_init(&table->waiter, NULL);
 }
 
 static void	init_table_seats(t_table *table)
@@ -70,6 +71,8 @@ static void	init_table_seats(t_table *table)
 	{
 		table->seats[i].id = i + 1;
 		table->seats[i].die_flag = &table->die_flag;
+		table->seats[i].stuffed_flag = 0;
+		table->seats[i].waiter = &table->waiter;
 	}
 	i = -1;
 	while (++i < table->num_seats)

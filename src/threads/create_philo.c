@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:57:56 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/12 12:26:51 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:55:32 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,23 @@ void	create_philo(t_table *table)
 		long int	now;
 		
 		i = -1;
-		usleep((table->routine.tim_die *1000));
+		usleep((table->routine.tim_die *1000) +500);
 		now = get_now(&table->seats[0]);
 		printf(" %ld ms death verify!!!!!.....................\n", now);
 		while (++i < table->num_seats)
 		{
 			if ((now - ((unsigned long int)table->seats[i].routine.last_meal)) > (unsigned long int)table->routine.tim_die)
 			{
-				table->die_flag = 1;
-				printf("if: %ldms now: %ldms %d died from Waiter\n", now - ((unsigned long int)table->seats[i].routine.last_meal), now, table->seats[i].id);
-				break ;
+				if (table->seats[i].stuffed_flag == 0)
+				{
+					pthread_mutex_lock(&table->waiter);
+					table->die_flag = 1;
+					pthread_mutex_unlock(&table->waiter);
+					printf("if: %ldms now: %ldms %d died from Waiter\n", now - ((unsigned long int)table->seats[i].routine.last_meal), now, table->seats[i].id);
+					break ;
+
+				
+				}
 			}
 		}
 	}
@@ -77,6 +84,7 @@ void	create_philo(t_table *table)
 	i = -1;
 	while (++i < table->num_seats)
 		pthread_mutex_destroy(&table->forks[i]);
+	pthread_mutex_destroy(&table->waiter);
 	free(table->forks);
 	free(table->seats);
 }
