@@ -15,15 +15,17 @@ LIBFT			= 	libft.a
 #compilation
 CC 				=	gcc
 CF 				=	-Wall -Wextra -Werror
-CFI 			=	-I $(INCLUDE)
+CFI 			=	-I $(INCLUDE_PATH)
 THREAD			=	-lpthread
 
 LIBFT_PATH 		=	./libft/
 SRC_PATH 		=	./src/
 OBJ_PATH		=	./obj/
-INCLUDE 		=	./include/
+INCLUDE_PATH 	=	./include/
 
 L_LIBFT			=	-L $(LIBFT_PATH) -lft
+
+INCLUDE			=	philosophers.h\
 
 SRC				=	main.c\
 					init_process.c\
@@ -40,6 +42,7 @@ VPATH 			:=	$(SRC_PATH)\
 					$(SRC_PATH)init\
 					$(SRC_PATH)exec\
 					$(SRC_PATH)time\
+					$(INCLUDE_PATH)\
 
 OBJ				=	$(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 
@@ -53,11 +56,11 @@ $(OBJ_PATH)%.o: %.c
 				$(CC) $(CF) $(CFI) -c $< -o $@
 				@printf "$(GR)Object ready!$(RC)"
 
-$(NAME):		$(OBJ)
+$(NAME):		$(OBJ) $(INCLUDE)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
 				make -C $(LIBFT_PATH) $(LIBFT)
 				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
-				$(CC) $(CF) -I $(INCLUDE) -o $(NAME) $(OBJ) $(L_LIBFT) $(THREAD)
+				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME) $(OBJ) $(L_LIBFT) $(THREAD)
 				@printf "$(GR)Done!$(RC)\n\n"
 
 all:			$(NAME)
