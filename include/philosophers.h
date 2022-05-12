@@ -20,7 +20,7 @@ typedef struct s_seat
 {
 	pthread_t		philo;
 	int				id;
-	int				die_flag;
+	int				*die_flag;
 	t_routine		routine;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
