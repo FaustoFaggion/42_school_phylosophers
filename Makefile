@@ -9,7 +9,7 @@
 #target:	depenencies
 #	action
 
-NAME			= 	philophers
+NAME			= 	philosophers
 LIBFT			= 	libft.a
 
 #compilation

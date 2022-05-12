@@ -1,7 +1,7 @@
 #include "philosophers.h"
 
 
-unsigned long long	get_time(void)
+unsigned long int	get_time(void)
 {
 	struct timeval	t;
 
@@ -10,7 +10,7 @@ unsigned long long	get_time(void)
 		+ (unsigned long long)t.tv_usec / 1000);
 }
 
-unsigned long long	get_now(t_seat *philo)
+unsigned long int	get_now(t_seat *philo)
 {
 	long int	t;
 

@@ -51,8 +51,8 @@ void	setup_table(t_table *table);
 void	*lunch(void *seat);
 
 //time
-unsigned long long	get_time(void);
-unsigned long long	get_now(t_seat *philo);
+unsigned long int	get_time(void);
+unsigned long int	get_now(t_seat *philo);
 
 
 
