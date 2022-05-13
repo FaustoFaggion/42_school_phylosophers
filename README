@@ -1,17 +1,25 @@
 # 42SP - Philosophers
 
+This project was create to teach the basics of threading a process.
+
+## What is a Thread?
+
+A thread is an execution context, which is all the information a CPU needs to execute a stream of instructions. A process can contain multiple threads.
+
 ## Thread X Process
 
 ### Threads
 
-- Run inside a process
-- Share the same process so:
-  - have the same memory space
-  - The variables of the process are comom for all threads. All threads can acess the same variables.
-  - As the varibles are comom you have to make sure when a thread is changing a variable the other threads can't acess the variable.
+- Run inside a process.
+- Share the same process:
+  - Share the same memory space.
+  - Share the variables of the process. All threads can acess the same variables.
+    - As the varibles are comom, you have to make sure when a thread is changing a variable the other threads can't acess the variable.
 - Share the same file handlers.
-- All the system resources are shared among the threads.
-- The system with thread will run. We can't control that.
+- Share the same system resources that was allocate for the processs that they are runnig in..
+- We can't control when the thread will run. The OS will manage the threads throught a tool called scheduler.
+- But like process, a thread has its own program counter, register set, and stack space.
+
 ### Process
 
 - Run independily from others process
@@ -26,9 +34,11 @@
 
 It just can happen if there is a multi core processor.
 
+## Paralelism
+
 ### Thread execution:
 
-- Read the value of them in your own register.
+- Read the values in your own register.
 - Apply a function required using the values saved in his register.
 -  Apply this values to the variables in memory.
 
