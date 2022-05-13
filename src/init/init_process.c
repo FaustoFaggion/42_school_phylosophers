@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_process.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/13 12:29:01 by fausto            #+#    #+#             */
+/*   Updated: 2022/05/13 12:30:55 by fausto           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 static int	chk_args(int argc, char *argv[]);
 static void	init_table(t_table *table, int argc, char *argv[]);
 static void	init_table_seats(t_table *table);
 static void	init_table_forks(t_table *table);
-
 
 int	init_process(t_table *table, int argc, char *argv[])
 {
@@ -13,12 +24,10 @@ int	init_process(t_table *table, int argc, char *argv[])
 	init_table(table, argc, argv);
 	init_table_seats(table);
 	init_table_forks(table);
-	
-	
 	return (0);
 }
 
-int		chk_args(int argc, char *argv[])
+static int	chk_args(int argc, char *argv[])
 {
 	int	i;
 
@@ -35,7 +44,6 @@ int		chk_args(int argc, char *argv[])
 			write(2, "Arguments must be a number!\n", 30);
 			return (1);
 		}
-
 		if (ft_atoi(argv[i]) <= 0)
 		{
 			write(2, "Arguments must be a number greater than 0!\n", 43);
@@ -102,16 +110,12 @@ static void	init_table_forks(t_table *table)
 			table->seats[i].fork_right = &table->forks[i];
 			table->seats[i].fork_left = &table->forks[0];
 			table->seats[i].routine.tim_eat = table->routine.tim_eat;
-			printf("id %d fork_left:  %p\n", table->seats[i].id, table->seats[i].fork_right);
-			printf("id %d fork_right: %p\n", table->seats[i].id, table->seats[i].fork_left);
 		}
 		else
 		{
 			table->seats[i].fork_right = &table->forks[i];
 			table->seats[i].fork_left = &table->forks[i + 1];
 			table->seats[i].routine.tim_eat = table->routine.tim_eat;
-			printf("id %d fork_left:  %p\n", table->seats[i].id, table->seats[i].fork_right);
-			printf("id %d fork_right: %p\n", table->seats[i].id, table->seats[i].fork_left);
 		}
 	}
 }

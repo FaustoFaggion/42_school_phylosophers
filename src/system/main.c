@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/13 12:46:24 by fausto            #+#    #+#             */
+/*   Updated: 2022/05/13 12:46:40 by fausto           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 void	print_(t_table *table, int argc)
@@ -10,7 +22,6 @@ void	print_(t_table *table, int argc)
 		printf("num_eat: %d\n", table->routine.num_eat);
 }
 
-
 int	main(int argc, char *argv[])
 {
 	t_table	table;
@@ -18,8 +29,8 @@ int	main(int argc, char *argv[])
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
 	setup_table(&table);
-	create_philo(&table);
-//	clean(&table);
-//	print_(&table, argc);
+	control_lunch(&table);
+	wait_and_destroy(&table);
+	clean(&table);
 	return (0);
 }

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   wait_and_destroy.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/06 06:56:30 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/13 12:47:00 by fausto           ###   ########.fr       */
+/*   Created: 2022/05/13 12:44:18 by fausto            #+#    #+#             */
+/*   Updated: 2022/05/13 12:44:44 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-/*	CLEAN
-**	-------
-**	DESCRIPTION
-**	Free all the memory allocated before ending the process
-**	-------
-**	PARAMETERS
-**	1. typedef struct table - This struct cotain all the main parâmeters of the
-**	program.
-**	RETURN VALUES
-**	-
-**	-------
-*/
-
-void	clean(t_table *table)
+void	wait_and_destroy(t_table *table)
 {
-	if (table->forks != NULL)
-		free(table->forks);
-	if (table->seats != NULL)
-		free(table->seats);
+	int	i;
+
+	i = -1;
+	while (++i < table->num_seats)
+	{
+		if (pthread_join(table->seats[i].philo, NULL) != 0)
+			return ;
+	}
+	i = -1;
+	while (++i < table->num_seats)
+		pthread_mutex_destroy(&table->forks[i]);
+	pthread_mutex_destroy(&table->waiter);
 }

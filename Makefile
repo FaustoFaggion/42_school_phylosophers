@@ -30,9 +30,11 @@ INCLUDE			=	philosophers.h\
 SRC				=	main.c\
 					init_process.c\
 					setup_table.c\
-					create_waiter.c\
 					create_philo.c\
+					control_lunch.c\
+					wait_and_destroy.c\
 					lunch.c\
+					lunch_actions.c\
 					time.c\
 					clean.c\
 
