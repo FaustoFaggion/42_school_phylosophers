@@ -60,7 +60,7 @@ It just can happen if there is a multi core processor.
 
 - Many to One
 
-<img width=600 src="./readme/many_to_one_thread.png">
+<img width=1800 src="./readme/many_to_one_thread.png">
 
 - One to One
 - Many to Many
