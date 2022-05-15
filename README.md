@@ -62,7 +62,8 @@ It just can happen if there is a multi core processor.
 <img width=1800 src="./readme/many_to_one_thread.png">
 
 - One to One
-  <img width=1800 src="./readme/one_to_one_thread.png">
+ 
+<img width=1800 src="./readme/one_to_one_thread.png">
 
 - Many to Many > Best solution(most used model)
 
