@@ -5,10 +5,6 @@ This project was create to teach the basics of threading a process.
 ## What is a Thread?
 A thread is an execution context, which is all the information a CPU needs to execute a stream of instructions. A process can contain multiple threads.
 
-## Types of Threads
-- User Threads > Supported above the kernel and are managed whitout kernel support.
-- Kernel Threads > Supported an manage directly by the operating system.
-
 ## Thread X Process
 A program under execution is known as a process and a thread is a basic unit execution. Thread is a basic unit of CPU utilization.
 
@@ -40,11 +36,11 @@ Share the same resources the was allocated to the process by the Operate System.
 - Resource Sharing > Allows several different threads to share the same adress space, making the process more economic. Create resources for process it is costly.
 - Utilization of Multiprocessor Architecture > Where threads can be running parallel on different processors, making a multithread process run tasks in parallel. A single thread process can run only on one CPU no matter how many CPUs are avaiable.
 
-## Race Condition
+### Race Condition
 
 A Race Condition occurr when two or more threads have to access the same data at the same time, creating a concorrency. The programer has to make sure that the threads do not use this data at the same time. When a thread is using a specific data, its necessary to block the use of it from other threads. For this we use the mutex.
 
-## Paralelism
+### Paralelism
 
 It just can happen if there is a multi core processor.
 
@@ -54,6 +50,22 @@ It just can happen if there is a multi core processor.
 - Read the values in your own register.
 - Apply a function required using the values saved in his register.
 -  Apply this values to the variables in memory.
+
+## Types of Threads
+
+- User Threads > Supported above the kernel and are managed whitout kernel support.
+- Kernel Threads > Supported an manage directly by the operating system.
+
+### Relationship User x Kernel Threads
+
+- Many to One
+- One to One
+- Many to Many
+
+<img width=60 src="./images/makefile_logo.png">
+
+
+
 
 ### Links
 
