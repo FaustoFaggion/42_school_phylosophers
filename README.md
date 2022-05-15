@@ -83,6 +83,8 @@ Threads:
 
 [Introdution to Threads](https://www.youtube.com/watch?v=LOfGJcVnvAk&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=31)
 
+[Multithreading Models](https://www.youtube.com/watch?v=HW2Wcx-ktsc&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=32)
+
 [Waht is a Thread](https://www.geeksforgeeks.org/thread-in-operating-system/)
 
 [Compiling threads](https://www.youtube.com/watch?v=j9csJohayPU)
