@@ -62,7 +62,7 @@ It just can happen if there is a multi core processor.
 - One to One
 - Many to Many
 
-<img width=60 src="./images/makefile_logo.png">
+<img width=100 src="./readme/many_to_one_thread.png">
 
 
 
