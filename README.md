@@ -3,8 +3,11 @@
 This project was create to teach the basics of threading a process.
 
 ## What is a Thread?
-
 A thread is an execution context, which is all the information a CPU needs to execute a stream of instructions. A process can contain multiple threads.
+
+## Types of Threads
+- User Threads > Supported above the kernel and are managed whitout kernel support.
+- Kernel Threads > Supported an manage directly by the operating system.
 
 ## Thread X Process
 A program under execution is known as a process and a thread is a basic unit execution. Thread is a basic unit of CPU utilization.
@@ -41,9 +44,10 @@ Share the same resources the was allocated to the process by the Operate System.
 
 A Race Condition occurr when two or more threads have to access the same data at the same time, creating a concorrency. The programer has to make sure that the threads do not use this data at the same time. When a thread is using a specific data, its necessary to block the use of it from other threads. For this we use the mutex.
 
+## Paralelism
+
 It just can happen if there is a multi core processor.
 
-## Paralelism
 
 ### Thread execution:
 
