@@ -59,11 +59,11 @@ It just can happen if there is a multi core processor.
 ### Relationship User x Kernel Threads
 
 - Many to One
+
+<img width=600 src="./readme/many_to_one_thread.png">
+
 - One to One
 - Many to Many
-
-<img width=100 src="./readme/many_to_one_thread.png">
-
 
 
 
