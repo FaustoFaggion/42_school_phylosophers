@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wait_and_destroy.c                                 :+:      :+:    :+:   */
+/*   setup_table.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:44:18 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/16 09:10:58 by fausto           ###   ########.fr       */
+/*   Created: 2022/05/13 12:45:44 by fausto            #+#    #+#             */
+/*   Updated: 2022/05/13 12:46:06 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	wait_and_destroy(t_table *table)
+void	setup_table(t_table *table)
 {
 	int	i;
 
+	table->routine.start = get_time();
 	i = -1;
 	while (++i < table->num_seats)
 	{
-		if (pthread_join(table->seats[i].philo, NULL) != 0)
-			return ;
+		table->seats[i].routine.start = table->routine.start;
+		table->seats[i].routine.last_meal = get_now(&table->seats[i]);
 	}
-	i = -1;
-	while (++i < table->num_seats)
-		pthread_mutex_destroy(&table->forks[i]);
-	pthread_mutex_destroy(&table->waiter);
+	create_philo(table);
 }

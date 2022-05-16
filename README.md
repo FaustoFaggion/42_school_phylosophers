@@ -36,20 +36,11 @@ Share the same resources the was allocated to the process by the Operate System.
 - Resource Sharing > Allows several different threads to share the same adress space, making the process more economic. Create resources for process it is costly.
 - Utilization of Multiprocessor Architecture > Where threads can be running parallel on different processors, making a multithread process run tasks in parallel. A single thread process can run only on one CPU no matter how many CPUs are avaiable.
 
-### Race Condition
-
-A Race Condition occurr when two or more threads have to access the same data at the same time, creating a concorrency. The programer has to make sure that the threads do not use this data at the same time. When a thread is using a specific data, its necessary to block the use of it from other threads. For this we use the mutex.
-
-### Paralelism
-
-It just can happen if there is a multi core processor.
-
-
 ### Thread execution:
 
-- Read the values in your own register.
-- Apply a function required using the values saved in his register.
--  Apply this values to the variables in memory.
+- Read the data in your own register.
+- Apply a function required using the data saved in his register.
+- Return the result to the data in memory.
 
 ## Types of Threads
 
@@ -68,6 +59,23 @@ It just can happen if there is a multi core processor.
 - Many to Many > Best solution(most used model)
 
 <img width=1800 src="./readme/many_to_many_thread.png">
+
+### Race Condition
+
+A situation where several threads access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
+
+[Race Condition(process syncronization)](https://www.youtube.com/watch?v=ph2awKa8r5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=56)
+
+### Critical Section
+
+Is a section in which the process may be changing commom data, writing commom files and so on.
+When one process is executing in its critical section, no other process is to be allowe to execute in its critical section.
+[Critical Section](https://www.youtube.com/watch?v=UtEORPakw5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=58)
+
+
+### Paralelism
+
+It just can happen if there is a multi core processor.
 
 ### Links
 
