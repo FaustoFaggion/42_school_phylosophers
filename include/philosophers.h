@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/13 12:35:21 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/17 13:16:04 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ typedef struct s_routine
 typedef struct s_seat
 {
 	pthread_t		philo;
+	int				one_philo_only;
 	int				id;
 	int				*die_flag;
-	int				stuffed_flag;
+	int				*stuffed_flag;
 	t_routine		routine;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;
@@ -48,6 +49,7 @@ typedef struct s_table
 	t_routine		routine;
 	pthread_mutex_t	waiter;
 	int				die_flag;
+	int				all_stuffed;
 }	t_table;
 
 //src/system
@@ -55,6 +57,8 @@ void				clean(t_table *table);
 
 //init
 int					init_process(t_table *table, int argc, char *argv[]);
+void				init_table_forks(t_table *table);
+void				init_table_forks_one(t_table *table);
 
 // threads
 void				setup_table(t_table *table);

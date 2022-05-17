@@ -50,7 +50,7 @@ static void	init_table(t_table *table, int argc, char *argv[])
 	if (argc == 6)
 		table->routine.num_eat = ft_atoi(argv[5]);
 	else
-		table->routine.num_eat = 0;
+		table->routine.num_eat = -1;
 	table->routine.last_meal = 0;
 	table->die_flag = 0;
 	pthread_mutex_init(&table->waiter, NULL);

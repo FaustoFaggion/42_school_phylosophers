@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/13 12:38:51 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/17 13:19:12 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	is_eating(t_seat *philo)
 	msg("is eating", philo);
 	usleep(philo->routine.tim_eat * 1000);
 	pthread_mutex_unlock(philo->fork_left);
-	pthread_mutex_unlock(philo->fork_right);
+	if (philo->one_philo_only != 1)
+		pthread_mutex_unlock(philo->fork_right);
 }
 
 void	is_sleeping(t_seat *philo)
@@ -61,5 +62,6 @@ void	is_sleeping(t_seat *philo)
 void	is_thinking(t_seat *philo)
 {
 	msg("is thinking", philo);
-	usleep(philo->routine.tim_die - (philo->routine.tim_slp + 100));
+	if (philo->routine.tim_die > philo->routine.tim_slp + 1)
+		usleep(philo->routine.tim_die - (philo->routine.tim_slp + 1));
 }

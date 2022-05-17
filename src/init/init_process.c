@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:29:01 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/13 12:30:55 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/17 13:15:35 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	chk_args(int argc, char *argv[]);
 static void	init_table(t_table *table, int argc, char *argv[]);
 static void	init_table_seats(t_table *table);
-static void	init_table_forks(t_table *table);
 
 int	init_process(t_table *table, int argc, char *argv[])
 {
@@ -23,7 +22,10 @@ int	init_process(t_table *table, int argc, char *argv[])
 		return (1);
 	init_table(table, argc, argv);
 	init_table_seats(table);
-	init_table_forks(table);
+	if (table->num_seats > 1)
+		init_table_forks(table);
+	else
+		init_table_forks_one(table);
 	return (0);
 }
 
@@ -65,6 +67,7 @@ static void	init_table(t_table *table, int argc, char *argv[])
 		table->routine.num_eat = 0;
 	table->routine.last_meal = 0;
 	table->die_flag = 0;
+	table->all_stuffed = 0;
 	pthread_mutex_init(&table->waiter, NULL);
 }
 
@@ -79,8 +82,11 @@ static void	init_table_seats(t_table *table)
 	{
 		table->seats[i].id = i + 1;
 		table->seats[i].die_flag = &table->die_flag;
-		table->seats[i].stuffed_flag = 0;
+		table->seats[i].stuffed_flag = &table->all_stuffed;
 		table->seats[i].waiter = &table->waiter;
+		table->seats[i].fork_left = NULL;
+		table->seats[i].fork_right = NULL;
+		table->seats[i].one_philo_only = table->num_seats;
 	}
 	i = -1;
 	while (++i < table->num_seats)
@@ -90,32 +96,5 @@ static void	init_table_seats(t_table *table)
 		table->seats[i].routine.tim_slp = table->routine.tim_slp;
 		table->seats[i].routine.num_eat = table->routine.num_eat;
 		table->seats[i].routine.last_meal = 0;
-	}
-}
-
-static void	init_table_forks(t_table *table)
-{
-	int	i;
-
-	table->forks = NULL;
-	table->forks = ft_calloc(table->num_seats + 1, sizeof(pthread_mutex_t));
-	i = -1;
-	while (++i < table->num_seats)
-		pthread_mutex_init(&table->forks[i], NULL);
-	i = -1;
-	while (++i < table->num_seats)
-	{
-		if (i + 1 == table->num_seats)
-		{
-			table->seats[i].fork_right = &table->forks[i];
-			table->seats[i].fork_left = &table->forks[0];
-			table->seats[i].routine.tim_eat = table->routine.tim_eat;
-		}
-		else
-		{
-			table->seats[i].fork_right = &table->forks[i];
-			table->seats[i].fork_left = &table->forks[i + 1];
-			table->seats[i].routine.tim_eat = table->routine.tim_eat;
-		}
 	}
 }
