@@ -58,52 +58,23 @@ static void	init_table(t_table *table, int argc, char *argv[])
 
 static void	init_table_seats(t_table *table)
 {
-	int	i;
-
 	table->seats = NULL;
-	table->seats = ft_calloc(table->num_seats + 1, sizeof(t_seat));
-	i = -1;
-	while (++i < table->num_seats)
-	{
-		table->seats[i].id = i + 1;
-		table->seats[i].die_flag = &table->die_flag;
-		table->seats[i].stuffed_flag = 0;
-		table->seats[i].waiter = &table->waiter;
-	}
-	i = -1;
-	while (++i < table->num_seats)
-	{
-		table->seats[i].routine.tim_die = table->routine.tim_die;
-		table->seats[i].routine.tim_eat = table->routine.tim_eat;
-		table->seats[i].routine.tim_slp = table->routine.tim_slp;
-		table->seats[i].routine.num_eat = table->routine.num_eat;
-		table->seats[i].routine.last_meal = 0;
-	}
+	table->seats = ft_calloc(1, sizeof(t_seat));
+	table->seats->id = 1;
+	table->seats->die_flag = &table->die_flag;
+	table->seats->stuffed_flag = 0;
+	table->seats->waiter = &table->waiter;
+	table->seats->routine.tim_die = table->routine.tim_die;
+	table->seats->routine.tim_eat = table->routine.tim_eat;
+	table->seats->routine.tim_slp = table->routine.tim_slp;
+	table->seats->routine.num_eat = table->routine.num_eat;
+	table->seats->routine.last_meal = 0;
 }
 
 static void	init_table_forks(t_table *table)
 {
-	int	i;
+	sem_t	semap;
 
-	table->forks = NULL;
-	table->forks = ft_calloc(table->num_seats + 1, sizeof(pthread_mutex_t));
-	i = -1;
-	while (++i < table->num_seats)
-		pthread_mutex_init(&table->forks[i], NULL);
-	i = -1;
-	while (++i < table->num_seats)
-	{
-		if (i + 1 == table->num_seats)
-		{
-			table->seats[i].fork_right = &table->forks[i];
-			table->seats[i].fork_left = &table->forks[0];
-			table->seats[i].routine.tim_eat = table->routine.tim_eat;
-		}
-		else
-		{
-			table->seats[i].fork_right = &table->forks[i];
-			table->seats[i].fork_left = &table->forks[i + 1];
-			table->seats[i].routine.tim_eat = table->routine.tim_eat;
-		}
-	}
+	sem_init(&semap, 1, table->num_seats / 2);
+	printf("semaphores: %d\n", table->num_seats / 2);
 }

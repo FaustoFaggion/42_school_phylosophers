@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/16 10:42:50 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/19 09:46:16 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include <sys/time.h>
+# include <semaphore.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 
 typedef struct s_routine
 {

@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
-//	setup_table(&table);
+	setup_table(&table);
 //	control_lunch(&table);
 //	wait_and_destroy(&table);
 //	clean(&table);

@@ -52,13 +52,13 @@ OBJ_PATH_BONUS	=	./bonus_obj/
 
 SRC_BONUS		=	main_bonus.c\
 					init_process_bonus.c\
+					time_bonus.c\
 					setup_table_bonus.c\
-					#create_philo.c\
-					control_lunch.c\
+					create_philo_bonus.c\
+					#control_lunch.c\
 					wait_and_destroy.c\
 					lunch.c\
 					lunch_actions.c\
-					time.c\
 					clean.c\
 
 OBJ_BONUS		=	$(addprefix $(OBJ_PATH_BONUS), $(notdir $(SRC_BONUS:.c=.o)))
@@ -72,7 +72,10 @@ VPATH 			:=	$(SRC_PATH)\
 					$(INCLUDE_PATH)\
 					$(SRC_PATH_BONUS)\
 					$(SRC_PATH_BONUS)system\
+					$(SRC_PATH_BONUS)threads\
 					$(SRC_PATH_BONUS)init\
+					$(SRC_PATH_BONUS)exec\
+					$(SRC_PATH_BONUS)time\
 
 #common commands
 RM 				=	rm -rf
