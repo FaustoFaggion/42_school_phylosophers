@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:57:56 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/24 17:41:33 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/24 18:17:44 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	create_philo_bonus(t_table *table)
 	int				pid;
 //	sem_t			*smp;
 
-	sem_unlink("semaphore");
-	table->smp = sem_open("semaphore", O_CREAT, S_IRWXU, 1);
+//	sem_unlink("semaphore");
+//	table->smp = sem_open("semaphore", O_CREAT, S_IRWXU, 1);
 	i = -1;
 	while (++i < table->num_seats)
 	{
@@ -27,8 +27,8 @@ void	create_philo_bonus(t_table *table)
 		pid = fork();
 		if (pid < 0)
 		{
-		//	sem_unlink(semaphore);
-//			sem_close(table->semap);
+			sem_unlink("semaphore");
+			sem_close(table->smp);
 			return ;
 		}
 		else if (pid == 0)
@@ -38,7 +38,6 @@ void	create_philo_bonus(t_table *table)
 	if (pid == 0)
 	{
 		lunch_bonus(table);
-//		printf("25 - pid[%d]: %d id: %d\n", i, pid[i], table->seats.id);
 		clean_bonus(table);
 		exit(0);
 	}

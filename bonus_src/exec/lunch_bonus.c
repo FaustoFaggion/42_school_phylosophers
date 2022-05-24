@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/24 17:43:49 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/24 18:19:21 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*lunch_bonus(t_table *table)
 		has_taken_a_fork_bonus(table);
 //		else
 //			has_taken_a_fork_one(philo);
-//		is_eating(philo);
+		is_eating(table);
 //		is_sleeping(philo);
 //		is_thinking(philo);
 //		if (++x == philo->seats.routine.num_eat || *(philo->seats.die_flag) == 1)

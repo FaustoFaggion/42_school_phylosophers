@@ -66,6 +66,7 @@ static void	init_table_seats(t_table *table, int argc, char *argv[])
 
 static void	init_table_forks(t_table *table)
 {
-//	table->smp = sem_open("semphore", O_CREAT, S_IRWXU, 1);
-	printf("semaphores: %d\n", table->num_seats / 2);
+	sem_unlink("semaphore");
+	table->smp = sem_open("semphore", O_CREAT, S_IRWXU, table->num_seats);
+	printf("semaphores: %d\n", table->num_seats);
 }

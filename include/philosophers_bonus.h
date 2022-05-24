@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/24 17:43:05 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/24 18:11:36 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void				wait_and_destroy(t_table *table);
 void				*lunch_bonus(t_table *table);
 void				msg_bonus(char *msg, t_table *table);
 void				has_taken_a_fork_bonus(t_table *table);
-void				is_eating(t_seat *philo);
+void				is_eating(t_table *table);
 void				is_sleeping(t_seat *philo);
 void				is_thinking(t_seat *philo);
 
