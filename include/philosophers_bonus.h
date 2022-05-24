@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/19 09:46:16 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/24 14:15:21 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include <stdio.h>
 # include "../libft/libft.h"
 # include <sys/time.h>
+# include <sys/wait.h>
 # include <semaphore.h>
 # include <sys/types.h>
-# include <sys/wait.h>
+# include <fcntl.h>
+# include <sys/stat.h>q
 
 typedef struct s_routine
 {
@@ -33,13 +35,10 @@ typedef struct s_routine
 
 typedef struct s_seat
 {
-	pthread_t		philo;
 	int				id;
 	int				*die_flag;
 	int				stuffed_flag;
 	t_routine		routine;
-	pthread_mutex_t	*fork_left;
-	pthread_mutex_t	*fork_right;
 	pthread_mutex_t	*waiter;
 }	t_seat;
 
@@ -47,10 +46,8 @@ typedef struct s_table
 {
 	int				num_seats;
 	t_seat			*seats;
-	pthread_mutex_t	*forks;
-	t_routine		routine;
 	pthread_mutex_t	waiter;
-	int				die_flag;
+	sem_t			smp;
 }	t_table;
 
 //src/system
