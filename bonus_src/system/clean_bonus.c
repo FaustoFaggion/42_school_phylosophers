@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_table_bonus.c                                :+:      :+:    :+:   */
+/*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 12:45:44 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/19 08:49:08 by fausto           ###   ########.fr       */
+/*   Created: 2022/05/06 06:56:30 by fagiusep          #+#    #+#             */
+/*   Updated: 2022/05/24 14:38:50 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers_bonus.h"
+#include "philosophers.h"
 
-void	setup_table(t_table *table)
+/*	CLEAN
+**	-------
+**	DESCRIPTION
+**	Free all the memory allocated before ending the process
+**	-------
+**	PARAMETERS
+**	1. typedef struct table - This struct cotain all the main parâmeters of the
+**	program.
+**	RETURN VALUES
+**	-
+**	-------
+*/
+
+void	clean_bonus(t_table *table)
 {
-	int	i;
-
-	table->routine.start = get_time();
-	i = -1;
-	while (++i < table->num_seats)
-	{
-		table->seats[i].routine.start = table->routine.start;
-		table->seats[i].routine.last_meal = get_now(&table->seats[i]);
-	}
-	create_philo(table);
+	if (table->seats != NULL)
+		free(table->seats);
 }

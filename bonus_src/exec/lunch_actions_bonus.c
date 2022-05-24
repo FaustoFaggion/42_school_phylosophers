@@ -6,33 +6,33 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/24 13:53:53 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/24 17:51:52 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers_bonus.h"
 
-void	msg(char *msg, t_table *table)
+void	msg_bonus(char *msg, t_table *table)
 {
 	long int	now;
 
-	pthread_mutex_lock(&table->waiter);
-	if (table->seats->die_flag == 0)
-	{
-		now = get_now(&table->seats);
+//	pthread_mutex_lock(&table->waiter);
+//	if (table->seats->die_flag == 0)
+//	{
+		now = get_now(table->seats);
 		printf("%ld %d %s\n", now, table->seats->id, msg);
 		sleep(2);
-	}
-	pthread_mutex_unlock(&table->waiter);
+//	}
+//	pthread_mutex_unlock(&table->waiter);
 }
 
-void	has_taken_a_fork(t_table *table)
+void	has_taken_a_fork_bonus(t_table *table)
 {
-	printf("philo[%d] taken_fork\n", table->seats->id);
+//	printf("philo[%d] taken_fork\n", table->seats->id);
 	sem_wait(table->smp);
+	sleep(1);
 	printf("enter the semaphore\n");
-	msg("has taken a fork", table);
-	sleep(2);
+//	msg_bonus("has taken a fork", table);
 	sem_post(table->smp);
 //	sem_wait(table->semap);
 //	msg("has taken a fork", table);

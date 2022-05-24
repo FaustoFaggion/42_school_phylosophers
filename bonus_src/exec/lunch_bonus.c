@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/24 13:52:52 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/24 17:43:49 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 //static void	has_taken_a_fork_one(t_seat *philo);
 
-void	*lunch(t_table *table)
+void	*lunch_bonus(t_table *table)
 {
 //	while (1)
 //	{
 		printf("philo[%d] start lunch!!\n", table->seats->id);
 		//if (table->num_seats != 1)
-		has_taken_a_fork(table);
+		has_taken_a_fork_bonus(table);
 //		else
 //			has_taken_a_fork_one(philo);
 //		is_eating(philo);
