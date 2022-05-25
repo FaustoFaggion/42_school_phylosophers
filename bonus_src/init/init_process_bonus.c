@@ -44,7 +44,6 @@ static int	chk_args(int argc, char *argv[])
 static void	init_table(t_table *table, char *argv[])
 {
 	table->num_seats = ft_atoi(argv[1]);
-	pthread_mutex_init(&table->waiter, NULL);
 }
 
 static void	init_table_seats(t_table *table, int argc, char *argv[])
@@ -66,7 +65,7 @@ static void	init_table_seats(t_table *table, int argc, char *argv[])
 
 static void	init_table_forks(t_table *table)
 {
-	sem_unlink("semaphore");
-	table->smp = sem_open("semphore", O_CREAT, S_IRWXU, table->num_seats);
+	sem_unlink("/semaphore");
+	table->smp = sem_open("semaphore", O_CREAT, S_IRWXU, table->num_seats);
 	printf("semaphores: %d\n", table->num_seats);
 }

@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/24 18:19:21 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/25 09:48:37 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 
 void	*lunch_bonus(t_table *table)
 {
+	if (table->seats->id % 2 == 0)
+		usleep((table->seats->routine.tim_die * 1000));
 //	while (1)
 //	{
-		printf("philo[%d] start lunch!!\n", table->seats->id);
+//		printf("philo[%d] start lunch!!\n", table->seats->id);
 		//if (table->num_seats != 1)
 		has_taken_a_fork_bonus(table);
 //		else

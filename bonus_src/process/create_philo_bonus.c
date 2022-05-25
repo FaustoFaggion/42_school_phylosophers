@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:57:56 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/24 18:17:44 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/25 09:42:01 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	create_philo_bonus(t_table *table)
 		}
 		else if (pid == 0)
 			break ;
-		printf("create philo[%d]!!\n", table->seats->id);//	
+//		printf("create philo[%d]!!\n", table->seats->id);//	
 	}
 	if (pid == 0)
 	{
@@ -44,6 +44,6 @@ void	create_philo_bonus(t_table *table)
 	i = -1;
 	while (++i < table->num_seats)
 		waitpid(pid, NULL, 0);
-	sem_unlink("semaphore");
+	sem_unlink("/semaphore");
 	sem_close(table->smp);
 }
