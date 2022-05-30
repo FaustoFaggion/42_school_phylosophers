@@ -3,7 +3,7 @@
 static int	chk_args(int argc, char *argv[]);
 static void	init_table(t_table *table, char *argv[]);
 static void	init_table_seats(t_table *table, int argc, char *argv[]);
-static void	init_table_forks(t_table *table);
+//static void	init_table_forks(t_table *table);
 
 int	init_process_bonus(t_table *table, int argc, char *argv[])
 {
@@ -11,7 +11,7 @@ int	init_process_bonus(t_table *table, int argc, char *argv[])
 		return (1);
 	init_table(table, argv);
 	init_table_seats(table, argc, argv);
-	init_table_forks(table);
+//	init_table_forks(table);
 	return (0);
 }
 
@@ -44,12 +44,14 @@ static int	chk_args(int argc, char *argv[])
 static void	init_table(t_table *table, char *argv[])
 {
 	table->num_seats = ft_atoi(argv[1]);
+	table->seats = ft_calloc(1, sizeof(t_seat));
+	sem_unlink("/semaphore");
+	table->smp = sem_open("/semaphore", O_CREAT, S_IRWXU, table->num_seats);
+	printf("semaphores: %d\n", table->num_seats);
 }
 
 static void	init_table_seats(t_table *table, int argc, char *argv[])
 {
-	table->seats = NULL;
-	table->seats = ft_calloc(1, sizeof(t_seat));
 	table->seats->id = 1;
 	table->seats->die_flag = 0;
 	table->seats->stuffed_flag = 0;
@@ -61,11 +63,4 @@ static void	init_table_seats(t_table *table, int argc, char *argv[])
 	else 
 		table->seats->routine.num_eat = -1;
 	table->seats->routine.last_meal = 0;
-}
-
-static void	init_table_forks(t_table *table)
-{
-	sem_unlink("/semaphore");
-	table->smp = sem_open("/semaphore", O_CREAT, S_IRWXU, table->num_seats);
-	printf("semaphores: %d\n", table->num_seats);
 }

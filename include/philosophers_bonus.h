@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/24 18:11:36 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/30 15:52:24 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct s_routine
 {
-	long int	start;
-	long int	last_meal;
+	unsigned long int	start;
+	unsigned long int	last_meal;
 	int			tim_die;
 	int			tim_eat;
 	int			tim_slp;
@@ -36,7 +36,7 @@ typedef struct s_routine
 typedef struct s_seat
 {
 	int				id;
-	int				*die_flag;
+	int				die_flag;
 	int				stuffed_flag;
 	t_routine		routine;
 }	t_seat;
@@ -45,7 +45,7 @@ typedef struct s_table
 {
 	unsigned int	num_seats;
 	t_seat			*seats;
-	pthread_mutex_t	waiter;
+	pthread_t		waiter;
 	sem_t			*smp;
 }	t_table;
 
@@ -66,8 +66,8 @@ void				*lunch_bonus(t_table *table);
 void				msg_bonus(char *msg, t_table *table);
 void				has_taken_a_fork_bonus(t_table *table);
 void				is_eating(t_table *table);
-void				is_sleeping(t_seat *philo);
-void				is_thinking(t_seat *philo);
+void				is_sleeping(t_table *table);
+void				is_thinking(t_table *table);
 
 //time
 unsigned long int	get_time(void);

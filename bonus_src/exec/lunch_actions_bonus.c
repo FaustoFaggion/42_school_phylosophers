@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/30 12:45:06 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/30 15:50:03 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	msg_bonus(char *msg, t_table *table)
 	{
 		now = get_now(table->seats);
 		printf("%ld %d %s\n", now, table->seats->id, msg);
-		sleep(2);
 	}
 }
 
@@ -42,17 +41,16 @@ void	is_eating(t_table *table)
 	sem_post(table->smp);
 	sem_post(table->smp);
 }
-/*
-void	is_sleeping(t_seat *philo)
+
+void	is_sleeping(t_table *table)
 {
-	msg("is sleeping", philo);
-	usleep(philo->routine.tim_slp * 1000);
+	msg_bonus("is sleeping", table);
+	usleep(table->seats->routine.tim_slp * 1000);
 }
 
-void	is_thinking(t_seat *philo)
+void	is_thinking(t_table *table)
 {
-	msg("is thinking", philo);
-	if (philo->routine.tim_die > philo->routine.tim_slp + 1)
-		usleep(philo->routine.tim_die - (philo->routine.tim_slp + 1));
+	msg_bonus("is thinking", table);
+	if (table->seats->routine.tim_die > table->seats->routine.tim_slp + 1)
+		usleep(table->seats->routine.tim_die - (table->seats->routine.tim_slp + 1));
 }
-*/
