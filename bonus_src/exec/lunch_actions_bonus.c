@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/30 15:50:03 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/30 17:38:35 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,14 @@ void	msg_bonus(char *msg, t_table *table)
 {
 	long int	now;
 
-	if (table->seats->die_flag == 0)
-	{
-		now = get_now(table->seats);
-		printf("%ld %d %s\n", now, table->seats->id, msg);
-	}
+	now = get_now(table->seats);
+	printf("%ld %d %s\n", now, table->seats->id, msg);
 }
 
 void	has_taken_a_fork_bonus(t_table *table)
 {
-	sem_wait(table->smp);
-	sem_wait(table->smp);
+	sem_wait(table->fork);
+	sem_wait(table->fork);
 	msg_bonus("has taken a fork", table);
 	msg_bonus("has taken a fork", table);
 }
@@ -38,8 +35,8 @@ void	is_eating(t_table *table)
 	usleep(table->seats->routine.tim_eat * 1000);
 //	if (philo->one_philo_only != 1)
 //		pthread_mutex_unlock(philo->fork_right);
-	sem_post(table->smp);
-	sem_post(table->smp);
+	sem_post(table->fork);
+	sem_post(table->fork);
 }
 
 void	is_sleeping(t_table *table)

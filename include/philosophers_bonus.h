@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/30 15:52:24 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/30 17:33:45 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_table
 	unsigned int	num_seats;
 	t_seat			*seats;
 	pthread_t		waiter;
-	sem_t			*smp;
+	sem_t			*fork;
 }	t_table;
 
 //src/system

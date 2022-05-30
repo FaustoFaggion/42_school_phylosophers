@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/30 15:38:05 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/30 17:37:32 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	*lunch_bonus(t_table *table)
 	x = 0;
 	pthread_create(&table->waiter, NULL, waiter, (void *)table->seats);
 	if (table->seats->id % 2 == 0)
-		usleep((table->seats->routine.tim_die * 1000));
+		usleep(90);
 	while (1)
 	{
 //		printf("philo[%d] start lunch!!\n", table->seats->id);

@@ -45,15 +45,14 @@ static void	init_table(t_table *table, char *argv[])
 {
 	table->num_seats = ft_atoi(argv[1]);
 	table->seats = ft_calloc(1, sizeof(t_seat));
-	sem_unlink("/semaphore");
-	table->smp = sem_open("/semaphore", O_CREAT, S_IRWXU, table->num_seats);
-	printf("semaphores: %d\n", table->num_seats);
+	sem_unlink("/fork");
+	table->fork = sem_open("/fork", O_CREAT, S_IRWXU, table->num_seats);
+	printf("semaphores forks: %d\n", table->num_seats);
 }
 
 static void	init_table_seats(t_table *table, int argc, char *argv[])
 {
 	table->seats->id = 1;
-	table->seats->die_flag = 0;
 	table->seats->stuffed_flag = 0;
 	table->seats->routine.tim_die = ft_atoi(argv[2]);
 	table->seats->routine.tim_eat = ft_atoi(argv[3]);
