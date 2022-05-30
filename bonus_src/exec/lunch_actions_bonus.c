@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/25 09:50:46 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/30 12:45:06 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	msg_bonus(char *msg, t_table *table)
 void	has_taken_a_fork_bonus(t_table *table)
 {
 	sem_wait(table->smp);
+	sem_wait(table->smp);
 	msg_bonus("has taken a fork", table);
-//	sem_wait(table->smp);
-//	msg_bonus("has taken a fork", table);
+	msg_bonus("has taken a fork", table);
 }
 
 void	is_eating(t_table *table)
@@ -40,7 +40,7 @@ void	is_eating(t_table *table)
 //	if (philo->one_philo_only != 1)
 //		pthread_mutex_unlock(philo->fork_right);
 	sem_post(table->smp);
-//	sem_post(table->smp);
+	sem_post(table->smp);
 }
 /*
 void	is_sleeping(t_seat *philo)
