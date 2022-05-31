@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 12:57:56 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/30 17:36:38 by fausto           ###   ########.fr       */
+/*   Created: 2022/05/31 15:39:54 by fausto            #+#    #+#             */
+/*   Updated: 2022/05/31 15:40:03 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,23 @@
 void	create_philo_bonus(t_table *table)
 {
 	unsigned int	i;
-	int				pid;
-//	sem_t			*smp;
 
-//	sem_unlink("semaphore");
-//	table->smp = sem_open("semaphore", O_CREAT, S_IRWXU, 1);
 	i = -1;
 	while (++i < table->num_seats)
 	{
 		table->seats->id = i + 1;
-		pid = fork();
-		if (pid < 0)
+		table->pid[i] = fork();
+		if (table->pid[i] < 0)
 		{
 			sem_unlink("/fork");
 			sem_close(table->fork);
 			return ;
 		}
-		else if (pid == 0)
+		else if (table->pid[i] == 0)
 		{
 			lunch_bonus(table);
 			clean_bonus(table);
 			exit(0);
 		}
 	}
-	
-	i = -1;
-	while (++i < table->num_seats)
-		waitpid(pid, NULL, 0);
-	sem_unlink("/fork");
-	sem_close(table->fork);
 }

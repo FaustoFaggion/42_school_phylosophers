@@ -6,11 +6,11 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:30 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/24 14:38:50 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/31 15:44:15 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philosophers_bonus.h"
 
 /*	CLEAN
 **	-------
@@ -29,4 +29,6 @@ void	clean_bonus(t_table *table)
 {
 	if (table->seats != NULL)
 		free(table->seats);
+	if (table->pid != NULL)
+		free(table->pid);
 }

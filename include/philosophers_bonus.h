@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/30 17:33:45 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/31 15:29:16 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ typedef struct s_table
 	t_seat			*seats;
 	pthread_t		waiter;
 	sem_t			*fork;
+	sem_t			*dead;
+	sem_t			*msg;
+	pid_t			*pid;
 }	t_table;
 
 //src/system
@@ -65,9 +68,9 @@ void				wait_and_destroy(t_table *table);
 void				*lunch_bonus(t_table *table);
 void				msg_bonus(char *msg, t_table *table);
 void				has_taken_a_fork_bonus(t_table *table);
-void				is_eating(t_table *table);
-void				is_sleeping(t_table *table);
-void				is_thinking(t_table *table);
+void				is_eating_bonus(t_table *table);
+void				is_sleeping_bonus(t_table *table);
+void				is_thinking_bonus(t_table *table);
 
 //time
 unsigned long int	get_time(void);
