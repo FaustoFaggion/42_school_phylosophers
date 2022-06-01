@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:41:19 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/01 20:16:55 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/01 20:21:43 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	*lunch_bonus(t_table *table)
 	int	x;
 
 	x = 0;
-	pthread_create(&table->waiter, NULL, grave_digger, (void *)table);
+	pthread_create(&table->grave_digger, NULL, grave_digger, (void *)table);
 	if (table->seats->id % 2 == 0)
 		usleep(500);
 	while (1)
