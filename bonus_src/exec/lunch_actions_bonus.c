@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:42:40 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/31 15:43:09 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/01 11:11:48 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,16 @@ void	is_sleeping_bonus(t_table *table)
 	usleep(table->seats->routine.tim_slp * 1000);
 }
 
-void	is_thinking_bonus(t_table *table)
+void	is_thinking(t_table *table)
 {
+	int	time_die;
+	int	time_slp;
+	int	time_eat;
+	
+	time_die = table->seats->routine.tim_die;
+	time_slp = table->seats->routine.tim_slp;
+	time_eat = table->seats->routine.tim_eat;
 	msg_bonus("is thinking", table);
-	if (table->seats->routine.tim_die > table->seats->routine.tim_slp + 1)
-		usleep(table->seats->routine.tim_die - (table->seats->routine.tim_slp + 1));
+	if (time_die - (time_eat + time_slp) > 1000)
+		usleep(((time_die - (time_eat + time_slp)) * 1000) - 500);
 }

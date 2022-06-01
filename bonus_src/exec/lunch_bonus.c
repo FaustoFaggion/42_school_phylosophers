@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:41:19 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/31 15:46:20 by fausto           ###   ########.fr       */
+/*   Updated: 2022/05/31 16:36:08 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ static void	*grave_digger(void *arg)
 		if (((long int)now - (long int)(table->seats->routine.last_meal))
 			> (long int)table->seats->routine.tim_die)
 		{
+			printf("now:%ld", now);
+			printf("last meal:%ld", (long int)(table->seats->routine.last_meal));
+			printf("sb:%ld\n", (long int)now - (long int)(table->seats->routine.last_meal));
 			if (table->seats->stuffed_flag == 0)
 			{
 				kill_process(table, now);

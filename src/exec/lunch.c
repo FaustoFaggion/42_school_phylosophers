@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/17 13:18:50 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/01 10:37:24 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*lunch(void *seat)
 
 	philo = (t_seat *)seat;
 	if (philo->id % 2 == 0)
-		usleep(90);
+		usleep(500);
 	x = 0;
 	while (1)
 	{
