@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:41:23 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/17 13:20:36 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/01 12:09:44 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	control_lunch(t_table *table)
 
 	while (1)
 	{	
+		usleep(500);
 		if (table->die_flag == 1 || table->all_stuffed == table->num_seats)
 			break ;
 		i = -1;

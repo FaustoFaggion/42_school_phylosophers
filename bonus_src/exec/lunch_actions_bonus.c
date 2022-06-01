@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:42:40 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/01 11:11:48 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/01 11:39:00 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	is_sleeping_bonus(t_table *table)
 	usleep(table->seats->routine.tim_slp * 1000);
 }
 
-void	is_thinking(t_table *table)
+void	is_thinking_bonus(t_table *table)
 {
 	int	time_die;
 	int	time_slp;
