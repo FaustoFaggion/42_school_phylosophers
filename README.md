@@ -127,6 +127,10 @@ When one process is executing in its critical section, no other process is to be
 
 Threads runing simultaniously in different cores. It just can happen if there is a multi core processor.
 
+### Atomic Operations
+
+Ensure that changes to a field are always consistent. Threads that share the same operation field are not allowed to run it at the same time.
+
 ### Semaphores
 
 Semaphore proposed by Edger Dijikstra, is a techinique to manage concurent processes by using a simple integer, wich is known as a semaphore.
@@ -157,16 +161,37 @@ function()
   code
 }
 ```
-- When a semaphore is created by the sem_open function, a integer is assigned to it.
+- When a semaphore is created by the 'sem_open' function, a integer, that can be defined as the last parameter of the 'sem_open' function, is assigned to it.
 - Every time that a thread from a proccess pass through the 'sem_wait' instruction, this integer is decreased by 1(integer--).
 - Every time that a thread from a proccess pass through the 'sem_post' instruction, this integer is increased by 1 (integer++).
 - When the integer reach 0, any thread that reachs the 'sem_wait' instruction will enter in a looping that will be breaked when the integer became greater than 0 again.
 - when a thread that is int the 'critical_section' reachs the 'sem_post', the integer is increased and the threads are able to pass through the 'sem_wait' again until the integer reachs 0 again.
 - Looking the function above, it is possible to define how many threads can access the critical_section simultaniously
 
-### Atomic Operations
+### Mutex
 
-Ensure that changes to a field are always consistent. Threads that share the same operation field are not allowed to run it at the same time.
+- It is a semaphore used to syncronizing threads from the same proccess.
+
+How it works:
+
+```
+function()
+{
+  code
+  pthread_mutex_lock(<mutex_name>);
+  
+  critical_section;
+
+  pthread_mutex_unlock(<mutex_name>);
+  code
+}
+```
+- When a mutex is created a integer of value 1 is assigned to it
+- Every time that a thread pass through the 'mutex_lock' instruction, this integer is decreased by 1(integer--).
+- Every time that a thread from a proccess pass through the 'mutex_unlock' instruction, this integer is increased by 1 (integer++).
+- When the integer reach 0, any thread that reachs the 'mutex_lock' instruction will enter in a looping that will be breaked when the integer became greater than 0 again.
+- when a thread that is int the 'critical_section' reachs the 'mutex_unlock', the integer is increased and the threads are able to pass through the 'mutex_lock' again until the integer reachs 0 again.
+- Looking the function above, only a thread at time can access the 'critical_section'. It is not allowed that two or more threads access the 'critical section' simultaneously.
 
 ## Links
 
