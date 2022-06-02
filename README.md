@@ -43,11 +43,11 @@ Install: `git clone git@github.com:barimehdi77/Philosophers.git`
 
 run: `make`
 
-# Maratory
+#### Maratory
 
 run: `./philo [nb_philo] [time_to_die] [time_to_eat] [optionnal: nb_of_eating_cycles]`
 
-# Bonus
+#### Bonus
 
 run: `make bonus`
 
