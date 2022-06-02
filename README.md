@@ -61,7 +61,7 @@ Threads share the same resources that was allocated to the process they are bell
 
 ### Process
 
-- Run independily from others process
+- Run indepently from others process
   - Have independent memory space
   - When create a process, the parent variables are duplicated for the child process.
   - Changes in variables on the parent process don't afect the variables in the child process.
