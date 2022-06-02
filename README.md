@@ -51,13 +51,13 @@ Threads Comprises:
 - A register set
 - A stack
 
-Threads share with other threads belonging to the same process the follow resources:
+Threads share the same resources that was allocated to the process they are bellong to. For exemple:
 - Code section
 - Data section
 - Open files
 - Signals
 
-Share the same resources the was allocated to the process by the Operate System.
+
 
 ### Process
 
