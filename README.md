@@ -2,6 +2,10 @@
 
 This project was create to teach the basics of threading a process.
 
+If you intend to undertand how the program works, I highly recommend to watch the follow play list on the NESO ACADEMY youtube channel
+
+https://www.youtube.com/watch?v=LOfGJcVnvAk&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=31
+
 ## Dining Philosophers Problem
 
 - Several philosophers are sitting at a round table doing one of three things: eating, thinking, or sleeping.
@@ -192,6 +196,29 @@ function()
 - When the integer reach 0, any thread that reachs the 'mutex_lock' instruction will enter in a looping that will be breaked when the integer became greater than 0 again.
 - when a thread that is int the 'critical_section' reachs the 'mutex_unlock', the integer is increased and the threads are able to pass through the 'mutex_lock' again until the integer reachs 0 again.
 - Looking the function above, only a thread at time can access the 'critical_section'. It is not allowed that two or more threads access the 'critical section' simultaneously.
+
+## Code Solution
+
+Follow a simple resume of what is happining in the code:
+
+- For each philosophers was created a thread
+- The threads run the same function that has a looping with the instructions to be done:
+  - take a fork;
+  - eat
+  - sleep
+  - think
+- Each fork that a philosophers needs to eat is a mutex. For each philosopers is assigned two mutex, one representing his rigth fork and other representing his left fork.
+
+**Note:**
+
+- The right fork of a philosopher is the same of lef fork of the previous philosopher.
+- The left fork of a philosopher is the same of lef fork of the next philosopher
+
+- Generaly speeking, placing the right and left mutex before the critical_section will ensure that any philosopher will eat without a fork.
+
+- In order to verify if a philosopher die, another thread called MONITOR was created.
+
+This thread runs a function that keeps verifing if the time of the last meal of each philosophers is greater than the time to die. If yes, the thread sets a flag to show all threads that a philosophers die, in order to stop. The program close.
 
 ## Links
 
