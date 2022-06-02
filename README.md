@@ -37,9 +37,21 @@ This project was create to teach the basics of threading a process.
 - You can’t have more than 10 ms between the death of a philosopher and when it will print its death.
 - Again, philosophers should avoid dying!
 
-## Intalling Program
+## Compilling the Program
 
-`git clone git@github.com:barimehdi77/Philosophers.git`
+Install: `git clone git@github.com:barimehdi77/Philosophers.git`
+
+run: `make`
+
+# Maratory
+
+run: `./philo [nb_philo] [time_to_die] [time_to_eat] [optionnal: nb_of_eating_cycles]`
+
+# Bonus
+
+run: `make bonus`
+
+run: `./philo [nb_philo] [time_to_die] [time_to_eat] [optionnal: nb_of_eating_cycles]`
 
 ## What is a Thread?
 A thread is an execution context, which is all the information a CPU needs to execute a stream of instructions. A process can contain multiple threads.
