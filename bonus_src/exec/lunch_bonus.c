@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:41:19 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/02 07:51:48 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/02 08:06:04 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	kill_process(t_table *table, unsigned long int now)
 {
 	int	i;
-	
+
 	table->seats->die_flag = 1;
 	printf("%ld %d died\n", now, table->seats->id);
 	i = -1;
@@ -54,7 +54,11 @@ static void	*grave_digger(void *arg)
 void	*lunch_bonus(t_table *table)
 {
 	int	x;
+	int	num_eat;
+	int	die_flag;
 
+	num_eat = table->seats->routine.num_eat;
+	die_flag = table->seats->die_flag;
 	x = 0;
 	pthread_create(&table->grave_digger, NULL, grave_digger, (void *)table);
 	if (table->seats->id % 2 == 0)
@@ -65,7 +69,7 @@ void	*lunch_bonus(t_table *table)
 		is_eating_bonus(table);
 		is_sleeping_bonus(table);
 		is_thinking_bonus(table);
-		if (++x == table->seats->routine.num_eat || (*table->seats).die_flag == 1)
+		if (++x == num_eat || die_flag == 1)
 			break ;
 	}
 	(*table->seats).stuffed_flag = 1;

@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/01 11:13:15 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/02 08:16:08 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	is_thinking(t_seat *philo)
 	int	time_die;
 	int	time_slp;
 	int	time_eat;
-	
+
 	time_die = philo->routine.tim_die;
 	time_slp = philo->routine.tim_slp;
 	time_eat = philo->routine.tim_eat;

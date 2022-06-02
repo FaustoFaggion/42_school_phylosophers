@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/02 08:12:47 by fausto            #+#    #+#             */
+/*   Updated: 2022/06/02 08:12:58 by fausto           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers_bonus.h"
 
 void	print_(t_table *table, int argc)
@@ -21,8 +33,6 @@ int	main(int argc, char *argv[])
 	i = -1;
 	while (++i < table.num_seats)
 		waitpid(table.pid[i], NULL, 0);
-//	control_lunch(&table);
-//	wait_and_destroy(&table);
 	clean_bonus(&table);
 	return (0);
 }

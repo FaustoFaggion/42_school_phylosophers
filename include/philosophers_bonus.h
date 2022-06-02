@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/01 20:21:28 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/02 08:01:34 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ typedef struct s_routine
 {
 	unsigned long int	start;
 	unsigned long int	last_meal;
-	int			tim_die;
-	int			tim_eat;
-	int			tim_slp;
-	int			num_eat;
+	int					tim_die;
+	int					tim_eat;
+	int					tim_slp;
+	int					num_eat;
 }	t_routine;
 
 typedef struct s_seat

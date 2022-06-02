@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_process_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/02 08:02:18 by fausto            #+#    #+#             */
+/*   Updated: 2022/06/02 08:02:19 by fausto           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers_bonus.h"
 
 static int	chk_args(int argc, char *argv[]);
@@ -59,10 +71,10 @@ static void	init_table_seats(t_table *table, int argc, char *argv[])
 	table->seats->stuffed_flag = 0;
 	table->seats->routine.tim_die = ft_atoi(argv[2]);
 	table->seats->routine.tim_eat = ft_atoi(argv[3]);
-	table->seats->routine.tim_slp =  ft_atoi(argv[4]);
+	table->seats->routine.tim_slp = ft_atoi(argv[4]);
 	if (argc == 6)
 		table->seats->routine.num_eat = ft_atoi(argv[5]);
-	else 
+	else
 		table->seats->routine.num_eat = -1;
 	table->seats->routine.last_meal = 0;
 }
