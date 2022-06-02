@@ -53,13 +53,15 @@ run: `make bonus`
 
 run: `./philo [nb_philo] [time_to_die] [time_to_eat] [optionnal: nb_of_eating_cycles]`
 
-## What is a Thread?
+## Threads Theory
+
+### What is a Thread?
 A thread is an execution context, which is all the information a CPU needs to execute a stream of instructions. A process can contain multiple threads.
 
-## Thread X Process
+### Thread X Process
 A program under execution is known as a process and a thread is a basic unit execution. Thread is a basic unit of CPU utilization.
 
-### Threads
+#### Threads
 
 Threads Comprises:
 - A Thread ID
@@ -75,7 +77,7 @@ Threads share the same resources that was allocated to the process they are bell
 
 
 
-### Process
+#### Process
 
 - Run indepently from others process
   - Have independent memory space
@@ -100,7 +102,7 @@ Threads share the same resources that was allocated to the process they are bell
 - User Threads > Supported above the kernel and are managed whitout kernel support.
 - Kernel Threads > Supported an manage directly by the operating system.
 
-### Relationship User x Kernel Threads
+### Relationship User Threads x Kernel Threads
 
 - Many to One
 
@@ -132,9 +134,7 @@ When one process is executing in its critical section, no other process is to be
 
 Threads runing simultaniously in different cores. It just can happen if there is a multi core processor.
 
-##Install
-
-
+### Semaphores
 
 ### Links
 
