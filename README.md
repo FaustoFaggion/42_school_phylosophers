@@ -136,7 +136,22 @@ Threads runing simultaniously in different cores. It just can happen if there is
 
 ### Semaphores
 
-### Links
+Semaphore proposed by Edger Dijikstra, is a techinique to manage concurent processes by using a simple integer, wich is known as a semaphore.
+
+It is simply a variable wich is non-negative and shared among threads.
+
+Apart from initialization, is accessed only throug two standard atomic operations: wait() and signal().
+
+semaphore   ->    S
+
+wait()      ->    P (from Dutch word proberen, wich means "to test")
+
+signal()    ->    V (from Dutch word verhogen, wich means "to increment")
+
+
+### Atomic Operations
+
+## Links
 
 README:
 
