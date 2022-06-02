@@ -209,7 +209,7 @@ Follow a simple resume of what is happining in the code:
   - think
 - Each fork that a philosophers needs to eat is a mutex. For each philosopers is assigned two mutex, one representing his rigth fork and other representing his left fork.
 
-**Note:**
+- **Note:**
 
   - The right fork of a philosopher is the same of lef fork of the previous philosopher.
   - The left fork of a philosopher is the same of lef fork of the next philosopher
