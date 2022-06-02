@@ -75,8 +75,6 @@ Threads share the same resources that was allocated to the process they are bell
 - Open files
 - Signals
 
-
-
 #### Process
 
 - Run indepently from others process
@@ -120,15 +118,10 @@ Threads share the same resources that was allocated to the process they are bell
 
 A situation where several threads access and manipulate the same data concurrently and the outcome of the execution depends on the particular order in which the access takes place.
 
-[Race Condition(process syncronization)](https://www.youtube.com/watch?v=ph2awKa8r5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=56)
-
 ### Critical Section
 
 Is a section in which the process may be changing commom data, writing commom files and so on.
 When one process is executing in its critical section, no other process is to be allowe to execute in its critical section.
-
-[Critical Section](https://www.youtube.com/watch?v=UtEORPakw5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=58)
-
 
 ### Paralelism
 
@@ -172,5 +165,11 @@ Threads:
 [Compiling threads](https://www.youtube.com/watch?v=j9csJohayPU)
 
 [Code Valt - threads](https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
+
+[Race Condition(process syncronization)](https://www.youtube.com/watch?v=ph2awKa8r5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=56)
+
+[Critical Section](https://www.youtube.com/watch?v=UtEORPakw5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=58)
+
+[Semaphore](https://www.youtube.com/watch?v=XDIOC2EY5JE&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=60)
 
 [Instructions per Second](https://en.wikipedia.org/wiki/Instructions_per_second)
