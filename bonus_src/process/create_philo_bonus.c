@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:39:54 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/31 15:40:03 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/02 07:56:28 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	create_philo_bonus(t_table *table)
 		else if (table->pid[i] == 0)
 		{
 			lunch_bonus(table);
+			pthread_join(table->grave_digger, NULL);
 			clean_bonus(table);
 			exit(0);
 		}

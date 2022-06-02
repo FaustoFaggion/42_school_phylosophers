@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:44 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/31 15:39:09 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/02 07:58:39 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	setup_table_bonus(t_table *table)
 	table->seats->routine.last_meal = get_now(table->seats);
 	create_philo_bonus(table);
 	pthread_create(&table->waiter, NULL, waiter, (void *)table);
+	pthread_join(table->waiter, NULL);
 }

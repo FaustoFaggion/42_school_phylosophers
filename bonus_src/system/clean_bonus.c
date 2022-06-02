@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:30 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/31 15:44:15 by fausto           ###   ########.fr       */
+/*   Updated: 2022/06/02 07:57:35 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@
 
 void	clean_bonus(t_table *table)
 {
+	sem_unlink("/fork");
+	sem_close(table->fork);
+	sem_unlink("/dead");
+	sem_close(table->dead);
+	sem_unlink("/msg");
+	sem_close(table->msg);
 	if (table->seats != NULL)
 		free(table->seats);
 	if (table->pid != NULL)

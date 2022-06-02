@@ -21,12 +21,6 @@ int	main(int argc, char *argv[])
 	i = -1;
 	while (++i < table.num_seats)
 		waitpid(table.pid[i], NULL, 0);
-	sem_unlink("/fork");
-	sem_close(table.fork);
-	sem_unlink("/dead");
-	sem_close(table.dead);
-	sem_unlink("/msg");
-	sem_close(table.msg);
 //	control_lunch(&table);
 //	wait_and_destroy(&table);
 	clean_bonus(&table);
