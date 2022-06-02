@@ -37,7 +37,7 @@ This project was create to teach the basics of threading a process.
 - You can’t have more than 10 ms between the death of a philosopher and when it will print its death.
 - Again, philosophers should avoid dying!
 
-## Compilling the Program
+## Compile the Program
 
 Install: `git clone git@github.com:barimehdi77/Philosophers.git`
 
