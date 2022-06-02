@@ -214,7 +214,7 @@ Follow a simple resume of what is happining in the code:
   - The right fork of a philosopher is the same of lef fork of the previous philosopher.
   - The left fork of a philosopher is the same of lef fork of the next philosopher
 
-- Generaly speeking, placing the right and left mutex before the critical_section will ensure that any philosopher will eat without a fork.
+- Generaly speeking, placing the right and left mutex before the critical_section will ensure that any philosopher will eat without or only one fork.
 
 - In order to verify if a philosopher die, another thread called MONITOR was created.
 
