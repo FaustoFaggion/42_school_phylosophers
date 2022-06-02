@@ -152,8 +152,10 @@ Threads:
 
 [Multithreading Models](https://www.youtube.com/watch?v=HW2Wcx-ktsc&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=32)
 
-[Waht is a Thread](https://www.geeksforgeeks.org/thread-in-operating-system/)
+[What is a Thread](https://www.geeksforgeeks.org/thread-in-operating-system/)
 
 [Compiling threads](https://www.youtube.com/watch?v=j9csJohayPU)
 
 [Code Valt - threads](https://www.youtube.com/playlist?list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2)
+
+[Instructions per Second](https://en.wikipedia.org/wiki/Instructions_per_second)
