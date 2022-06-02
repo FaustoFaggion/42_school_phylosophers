@@ -50,11 +50,13 @@ Threads Comprises:
 - A Program counter
 - A register set
 - A stack
+
 Threads share with other threads belonging to the same process the follow resources:
 - Code section
 - Data section
 - Open files
 - Signals
+
 Share the same resources the was allocated to the process by the Operate System.
 
 ### Process
