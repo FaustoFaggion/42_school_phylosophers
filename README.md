@@ -39,7 +39,7 @@ This project was create to teach the basics of threading a process.
 
 ## Intalling Program
 
-"git clone git@github.com:barimehdi77/Philosophers.git"
+'''git clone git@github.com:barimehdi77/Philosophers.git'''
 
 ## What is a Thread?
 A thread is an execution context, which is all the information a CPU needs to execute a stream of instructions. A process can contain multiple threads.
