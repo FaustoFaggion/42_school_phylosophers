@@ -141,8 +141,32 @@ wait()      ->    P (from Dutch word proberen, wich means "to test")
 
 signal()    ->    V (from Dutch word verhogen, wich means "to increment")
 
+It is used to control the access of Proccess into critical sections.
+
+How it works:
+
+```
+function()
+{
+  code
+  sem_wait(<semaphore_name>);
+  
+  critical_section;
+
+  sem_post(<semaphore_name>);
+  code
+}
+```
+- When a semaphore is created by the sem_open function, a integer is assigned to it.
+- Every time that a thread from a proccess pass through the 'sem_wait' instruction, this integer is decreased by 1(integer--).
+- Every time that a thread from a proccess pass through the 'sem_post' instruction, this integer is increased by 1 (integer++).
+- When the integer reach 0, any thread that reachs the 'sem_wait' instruction will enter in a looping that will be breaked when the integer became greater than 0 again.
+- when a thread that is int the 'critical_section' reachs the 'sem_post', the integer is increased and the threads are able to pass through the 'sem_wait' again until the integer reachs 0 again.
+- Looking the function above, it is possible to define how many threads can access the critical_section simultaniously
 
 ### Atomic Operations
+
+Ensure that changes to a field are always consistent. Threads that share the same operation field are not allowed to run it at the same time.
 
 ## Links
 
