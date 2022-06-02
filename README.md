@@ -211,8 +211,8 @@ Follow a simple resume of what is happining in the code:
 
 **Note:**
 
-- The right fork of a philosopher is the same of lef fork of the previous philosopher.
-- The left fork of a philosopher is the same of lef fork of the next philosopher
+  - The right fork of a philosopher is the same of lef fork of the previous philosopher.
+  - The left fork of a philosopher is the same of lef fork of the next philosopher
 
 - Generaly speeking, placing the right and left mutex before the critical_section will ensure that any philosopher will eat without a fork.
 
