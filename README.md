@@ -50,6 +50,7 @@ Share the same resources the was allocated to the process by the Operate System.
 ### Relationship User x Kernel Threads
 
 - Many to One
+
 <img width=1800 src="./readme/many_to_one_thread.png">
 
 - One to One
@@ -70,12 +71,13 @@ A situation where several threads access and manipulate the same data concurrent
 
 Is a section in which the process may be changing commom data, writing commom files and so on.
 When one process is executing in its critical section, no other process is to be allowe to execute in its critical section.
+
 [Critical Section](https://www.youtube.com/watch?v=UtEORPakw5Y&list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O&index=58)
 
 
 ### Paralelism
 
-It just can happen if there is a multi core processor.
+Threads runing simultaniously in different cores. It just can happen if there is a multi core processor.
 
 ### Links
 
