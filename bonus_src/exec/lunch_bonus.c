@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 15:41:19 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/02 08:06:04 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/13 10:54:33 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,30 @@ static void	*grave_digger(void *arg)
 	return ((void *)0);
 }
 
+static void	has_taken_a_fork_one_bonus(t_table *table)
+{
+	int			time_die;
+	long int	now;
+
+	time_die = table->seats->routine.tim_die;
+	msg_bonus("has taken a fork", table);
+	usleep(time_die * 1000);
+	now = get_now(table->seats);
+	kill_process(table, now);
+}
+
+static int	taken_fork(t_table *table)
+{
+	if (table->num_seats != 1)
+		has_taken_a_fork_bonus(table);
+	else
+	{
+		has_taken_a_fork_one_bonus(table);
+		return (1);
+	}
+	return (0);
+}
+
 void	*lunch_bonus(t_table *table)
 {
 	int	x;
@@ -65,7 +89,8 @@ void	*lunch_bonus(t_table *table)
 		usleep(500);
 	while (1)
 	{
-		has_taken_a_fork_bonus(table);
+		if (taken_fork(table) == 1)
+			break ;
 		is_eating_bonus(table);
 		is_sleeping_bonus(table);
 		is_thinking_bonus(table);

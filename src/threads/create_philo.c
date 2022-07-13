@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:57:56 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/05/13 12:45:21 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/12 11:14:44 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	create_philo(t_table *table)
 	while (++i < table->num_seats)
 	{
 		if (pthread_create(&table->seats[i].philo, NULL, lunch,
-				(void*)&table->seats[i]) != 0)
+				(void *)&table->seats[i]) != 0)
 			return ;
 	}
 }

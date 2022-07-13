@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/06/01 10:37:24 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/13 10:46:31 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	*lunch(void *seat)
 		if (philo->one_philo_only != 1)
 			has_taken_a_fork(philo);
 		else
+		{
 			has_taken_a_fork_one(philo);
+			break ;
+		}
 		is_eating(philo);
 		is_sleeping(philo);
 		is_thinking(philo);
@@ -41,6 +44,12 @@ void	*lunch(void *seat)
 
 static void	has_taken_a_fork_one(t_seat *philo)
 {
+	long int	now;
+
 	pthread_mutex_lock(philo->fork_left);
 	msg("has taken a fork", philo);
+	usleep(philo->routine.tim_die * 1000);
+	now = get_now(philo);
+	*philo->die_flag = 1;
+	printf("%ld %d died\n", now, philo->id);
 }
