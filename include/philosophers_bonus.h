@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/06/02 08:01:34 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/13 12:23:03 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 
 # include <pthread.h>
 # include <stdio.h>
-# include "../libft/libft.h"
 # include <sys/time.h>
 # include <sys/wait.h>
 # include <semaphore.h>
 # include <sys/types.h>
 # include <fcntl.h>
 # include <sys/stat.h>
+# include <stdlib.h>
+#include <unistd.h>
+
+
+# define INT_MAX 2147483647
 
 typedef struct s_routine
 {
@@ -55,6 +59,9 @@ typedef struct s_table
 
 //src/system
 void				clean_bonus(t_table *table);
+void				*ft_calloc(size_t nmemb, size_t size);
+int					ft_atoi(const char *ptr);
+int					ft_isdigit(int c);
 
 //init
 int					init_process_bonus(t_table *table, int argc, char *argv[]);

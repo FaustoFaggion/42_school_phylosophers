@@ -10,7 +10,6 @@
 #	action
 
 NAME			= 	philo
-LIBFT			= 	libft.a
 
 #compilation
 CC 				=	gcc
@@ -18,7 +17,6 @@ CF 				=	-Wall -Wextra -Werror
 CFI 			=	-I $(INCLUDE_PATH)
 THREAD			=	-lpthread
 
-LIBFT_PATH 		=	./libft/
 SRC_PATH 		=	./src/
 OBJ_PATH		=	./obj/
 INCLUDE_PATH 	=	./include/
@@ -28,6 +26,8 @@ L_LIBFT			=	-L $(LIBFT_PATH) -lft
 INCLUDE			=	philosophers.h
 
 SRC				=	main.c\
+					system_calloc.c\
+					system_atoi.c\
 					init_process.c\
 					init_process_utils.c\
 					setup_table.c\
@@ -51,6 +51,8 @@ SRC_PATH_BONUS	=	./bonus_src/
 OBJ_PATH_BONUS	=	./bonus_obj/
 
 SRC_BONUS		=	main_bonus.c\
+					system_calloc_bonus.c\
+					system_atoi_bonus.c\
 					init_process_bonus.c\
 					clean_bonus.c\
 					time_bonus.c\
@@ -96,16 +98,14 @@ $(OBJ_PATH_BONUS)%.o: %.c
 
 $(NAME):		$(OBJ) $(INCLUDE)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
-				make -C $(LIBFT_PATH) $(LIBFT)
 				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
-				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME) $(OBJ) $(L_LIBFT) $(THREAD)
+				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME) $(OBJ) $(THREAD)
 				@printf "$(GR)Done!$(RC)\n\n"
 
 $(NAME_BONUS):	$(OBJ_BONUS) $(INCLUDE_BONUS)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
-				make -C $(LIBFT_PATH) $(LIBFT)
 				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
-				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME_BONUS) $(OBJ_BONUS) $(L_LIBFT) $(THREAD)
+				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME_BONUS) $(OBJ_BONUS) $(THREAD)
 				@printf "$(GR)Done!$(RC)\n\n"
 
 all:			$(NAME)
@@ -115,13 +115,11 @@ bonus:			$(NAME_BONUS)
 re:				fclean all
 
 clean:
-				make -C $(LIBFT_PATH) clean
 				$(RM) $(OBJ) $(OBJ_PATH)
 				$(RM) $(OBJ_BONUS) $(OBJ_PATH_BONUS)
 				@printf "$(RE)minishell objects removed!$(RC)\n\n"
 
 fclean:			clean
-				make -C $(LIBFT_PATH) fclean
 				$(RM) $(NAME)
 				$(RM) $(NAME_BONUS)
 				@printf "$(RE)Executables removed!$(RC)\n\n"
