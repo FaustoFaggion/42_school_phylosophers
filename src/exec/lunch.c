@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 06:56:36 by fagiusep          #+#    #+#             */
-/*   Updated: 2022/07/13 10:46:31 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/18 12:28:19 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	*lunch(void *seat)
 		if (++x == philo->routine.num_eat || *(philo->die_flag) == 1)
 			break ;
 	}
-	*(philo->stuffed_flag) += 1;
+	*(philo->stuffed) += 1;
+	philo->stuffed_flag = 1;
 	return ((void *)0);
 }
 

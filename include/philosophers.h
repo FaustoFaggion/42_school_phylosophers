@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/13 12:22:12 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/18 11:10:25 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ typedef struct s_seat
 	int				one_philo_only;
 	int				id;
 	int				*die_flag;
-	int				*stuffed_flag;
+	int				*stuffed;
+	int				stuffed_flag;
 	t_routine		routine;
 	pthread_mutex_t	*fork_left;
 	pthread_mutex_t	*fork_right;

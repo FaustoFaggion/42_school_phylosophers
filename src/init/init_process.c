@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:29:01 by fausto            #+#    #+#             */
-/*   Updated: 2022/05/17 13:15:35 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/18 11:11:07 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ static void	init_table_seats(t_table *table)
 	{
 		table->seats[i].id = i + 1;
 		table->seats[i].die_flag = &table->die_flag;
-		table->seats[i].stuffed_flag = &table->all_stuffed;
+		table->seats[i].stuffed = &table->all_stuffed;
+		table->seats[i].stuffed_flag = 0;
 		table->seats[i].waiter = &table->waiter;
 		table->seats[i].fork_left = NULL;
 		table->seats[i].fork_right = NULL;

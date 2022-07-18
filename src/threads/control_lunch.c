@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:41:23 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/13 18:49:00 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/18 12:29:31 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ void	control_lunch(t_table *table)
 	long int	now;
 	int			i;
 
-	while (1)
-	{	
-		usleep(500);
-		i = -1;
-		while (++i < table->num_seats)
-		{
-			now = get_now(&table->seats[0]);
-			if ((now - ((unsigned long int)table->seats[i].routine.last_meal))
-				> (unsigned long int)table->routine.tim_die)
+		while (1)
+		{	
+			usleep(500);
+			i = -1;
+			while (++i < table->num_seats)
 			{
-				if (*(table->seats[i].stuffed_flag) == 0)
+				now = get_now(&table->seats[0]);
+				if ((now - ((unsigned long int)table->seats[i].routine.last_meal))
+					> (unsigned long int)table->routine.tim_die)
 				{
-					philo_killer(table, i, now);
-					break ;
+					if (table->seats[i].stuffed_flag == 0)
+					{
+						philo_killer(table, i, now);
+						break ;
+					}
 				}
 			}
+			if (table->die_flag == 1 || table->all_stuffed == table->num_seats)
+				break ;
 		}
-		if (table->die_flag == 1 || table->all_stuffed == table->num_seats)
-			break ;
-	}
 }
