@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:38:15 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/18 13:48:10 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:26:23 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	is_thinking(t_seat *philo)
 	msg("is thinking", philo);
 	if (time_die - (time_eat + time_slp) > 10)
 	{
-		usleep(((time_die - (time_eat + time_slp)) * 1000) - (10 *1000));
+		usleep(((time_die - (time_eat + time_slp)) * 1000) - (10 * 1000));
 	}
 }

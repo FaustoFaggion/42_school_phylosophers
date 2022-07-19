@@ -98,13 +98,13 @@ $(OBJ_PATH_BONUS)%.o: %.c
 
 $(NAME):		$(OBJ) $(INCLUDE)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
-				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
+				@printf "\n$(CY)Generating philosopher executable...$(RC)\n"
 				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME) $(OBJ) $(THREAD)
 				@printf "$(GR)Done!$(RC)\n\n"
 
 $(NAME_BONUS):	$(OBJ_BONUS) $(INCLUDE_BONUS)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
-				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
+				@printf "\n$(CY)Generating philosopher executable...$(RC)\n"
 				$(CC) $(CF) -I $(INCLUDE_PATH) -o $(NAME_BONUS) $(OBJ_BONUS) $(THREAD)
 				@printf "$(GR)Done!$(RC)\n\n"
 

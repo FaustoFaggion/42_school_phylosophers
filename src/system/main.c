@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:46:24 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/18 12:29:51 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:28:48 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char *argv[])
 {
 	t_table	table;
 
-	setbuf(stdout, NULL);
 	if (init_process(&table, argc, argv) == 1)
 		return (1);
 	setup_table(&table);

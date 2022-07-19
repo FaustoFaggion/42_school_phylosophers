@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:26:09 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/13 12:23:03 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/19 12:28:27 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@
 # include <fcntl.h>
 # include <sys/stat.h>
 # include <stdlib.h>
-#include <unistd.h>
-
+# include <unistd.h>
 
 # define INT_MAX 2147483647
 
