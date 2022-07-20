@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:29:01 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/20 10:48:28 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/20 10:53:47 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	init_process(t_table *table, int argc, char *argv[])
 
 static int	chk_args(int argc, char *argv[])
 {
-
 	if (argc < 5 || argc > 6)
 	{
 		write(2, "Wrong number of arguments!\n", 27);
