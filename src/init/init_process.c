@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:29:01 by fausto            #+#    #+#             */
-/*   Updated: 2022/07/18 11:11:07 by fausto           ###   ########.fr       */
+/*   Updated: 2022/07/20 10:08:27 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	chk_args(int argc, char *argv[]);
 static void	init_table(t_table *table, int argc, char *argv[]);
 static void	init_table_seats(t_table *table);
+static int	convert_to_number(int argc, char *argv[]);
 
 int	init_process(t_table *table, int argc, char *argv[])
 {
@@ -31,26 +32,42 @@ int	init_process(t_table *table, int argc, char *argv[])
 
 static int	chk_args(int argc, char *argv[])
 {
-	int	i;
 
 	if (argc != 5 && argc != 6)
 	{
 		write(2, "Wrong number of arguments!\n", 27);
 		return (1);
 	}
+	if (convert_to_number(argc, argv) == 1)
+		return (1);
+	return (0);
+}
+
+static int	convert_to_number(int argc, char *argv[])
+{
+	int	i;
+	int	j;
+
 	i = 0;
 	while (++i < argc)
 	{
-		if (ft_isdigit((*argv)[i]))
+		j = 0;
+		while (argv[i][j])
 		{
-			write(2, "Arguments must be a number!\n", 30);
-			return (1);
+			if (argv[i][0] == '-')
+			{
+				write(2, "Arguments must be a number greater than 0!\n", 43);
+				return (1);
+			}	
+			if (ft_isdigit(argv[i][j]) == 0)
+			{
+				printf("argc: %d digit:%c", i, argv[i][j]);
+				write(2, "Arguments must be a number!\n", 30);
+				return (1);
+			}
+			j++;
 		}
-		if (ft_atoi(argv[i]) <= 0)
-		{
-			write(2, "Arguments must be a number greater than 0!\n", 43);
-			return (1);
-		}
+		ft_atoi(argv[i]);
 	}
 	return (0);
 }
